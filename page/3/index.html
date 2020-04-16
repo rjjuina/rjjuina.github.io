@@ -71,78 +71,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-tomcat-maven-plugin" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/07/tomcat-maven-plugin/" class="article-date">
-  <time datetime="2018-04-06T16:00:00.000Z" itemprop="datePublished">2018-04-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/07/tomcat-maven-plugin/">Tomcat Maven Plugin</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <blockquote>
-<p>Funny Prerequisites - You must have an understanding of how to install software on your computer. If you don’t know how to do this, please ask someone at your office, school, etc or pay someone to explain this to you.</p>
-</blockquote>
-<h2 id="Start-maven-project"><a href="#Start-maven-project" class="headerlink" title="Start maven project"></a>Start maven project</h2><ul>
-<li>step1: building project with maven command(mvn clean install/mvn verify/mvn clean package…)</li>
-<li>step2: mvn tomcat7:run</li>
-</ul>
-<h2 id="How-that-would-be"><a href="#How-that-would-be" class="headerlink" title="How that would be?"></a>How that would be?</h2><p>config: start server by tomcat maven plugin</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">finalName</span>&gt;</span>jjuina<span class="tag">&lt;/<span class="name">finalName</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.tomcat.maven<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>tomcat7-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;tomcat7-maven-plugin.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">port</span>&gt;</span>9000<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">path</span>&gt;</span>/jjuina<span class="tag">&lt;/<span class="name">path</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">systemProperties</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">application.environment</span>&gt;</span>dev<span class="tag">&lt;/<span class="name">application.environment</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">application.name</span>&gt;</span>jjuina<span class="tag">&lt;/<span class="name">application.name</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">application.home</span>&gt;</span>.<span class="tag">&lt;/<span class="name">application.home</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">systemProperties</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-compiler-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">source</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">source</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">target</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">target</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-war-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">failOnMissingWebXml</span>&gt;</span>false<span class="tag">&lt;/<span class="name">failOnMissingWebXml</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Configuring-local-repository"><a href="#Configuring-local-repository" class="headerlink" title="Configuring local repository"></a>Configuring local repository</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">settings</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="tag">&lt;<span class="name">ocalRepository</span>&gt;</span>/path/to/local/repo/<span class="tag">&lt;/<span class="name">localRepository</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Apache-Tomcat-Maven-Plugin"><a href="#Apache-Tomcat-Maven-Plugin" class="headerlink" title="Apache Tomcat Maven Plugin"></a>Apache Tomcat Maven Plugin</h2><blockquote>
-<p>Goals: it gives an opportunity to quickly develop our application without needing to install a standalone Tomcat instance.</p>
-</blockquote>
-<ol>
-<li>manipulate WAR projects within Apache Tomcat servlet container</li>
-<li>run WAR project with a embedded Apache Tomcat.</li>
-</ol>
-<h2 id="Public-Maven-Repositories"><a href="#Public-Maven-Repositories" class="headerlink" title="Public Maven Repositories"></a>Public Maven Repositories</h2><ul>
-<li>Maven Central - <a href="https://repo.maven.apache.org/maven2/" target="_blank" rel="noopener">https://repo.maven.apache.org/maven2/</a></li>
-<li>Sonatype Releases - <a href="https://oss.sonatype.org/content/repositories/releases/" target="_blank" rel="noopener">https://oss.sonatype.org/content/repositories/releases/</a></li>
-<li>JCenter - <a href="https://jcenter.bintray.com/" target="_blank" rel="noopener">https://jcenter.bintray.com/</a></li>
-<li>JBoss - <a href="https://repository.jboss.org/nexus/content/repositories/releases/" target="_blank" rel="noopener">https://repository.jboss.org/nexus/content/repositories/releases/</a></li>
-<li>Clojars - <a href="https://repo.clojars.org/" target="_blank" rel="noopener">https://repo.clojars.org/</a></li>
-<li>Atlassian Maven - <a href="https://packages.atlassian.com/maven-public/" target="_blank" rel="noopener">https://packages.atlassian.com/maven-public/</a></li>
-</ul>
-<h2 id="Reference-Link"><a href="#Reference-Link" class="headerlink" title="Reference Link"></a>Reference Link</h2><p><a href="https://www.deps.co/guides/public-maven-repositories/" target="_blank" rel="noopener">https://www.deps.co/guides/public-maven-repositories/</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.jjuina.com/2018/04/07/tomcat-maven-plugin/" data-id="ck92uka5000290wur7rre3m9n" class="article-share-link">Share</a>
-      
-      
-        <a href="http://www.jjuina.com/2018/04/07/tomcat-maven-plugin/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tomcat-Maven/" rel="tag">Tomcat, Maven</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
     <article id="post-way-of-performing-http-request" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/03/17/way-of-performing-http-request/" class="article-date">
@@ -178,7 +106,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.jjuina.com/2018/03/17/way-of-performing-http-request/" data-id="ck92uka52002e0wur34pkgxnx" class="article-share-link">Share</a>
+      <a data-url="http://www.jjuina.com/2018/03/17/way-of-performing-http-request/" data-id="ck92vbcmq002ifzurhqu80aom" class="article-share-link">Share</a>
       
       
         <a href="http://www.jjuina.com/2018/03/17/way-of-performing-http-request/#disqus_thread" class="article-comment-link">Comments</a>
@@ -228,7 +156,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.jjuina.com/2018/01/04/css-grid-layout-way-to-page/" data-id="ck92uka4c000x0wur1hq40rmf" class="article-share-link">Share</a>
+      <a data-url="http://www.jjuina.com/2018/01/04/css-grid-layout-way-to-page/" data-id="ck92vbclf0011fzur44ve1518" class="article-share-link">Share</a>
       
       
         <a href="http://www.jjuina.com/2018/01/04/css-grid-layout-way-to-page/#disqus_thread" class="article-comment-link">Comments</a>
@@ -291,7 +219,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.jjuina.com/2017/12/20/what-we-should-know-about-web-dev/" data-id="ck92uka51002c0wur4lwo5m5u" class="article-share-link">Share</a>
+      <a data-url="http://www.jjuina.com/2017/12/20/what-we-should-know-about-web-dev/" data-id="ck92vbcmr002jfzura6wq8h9l" class="article-share-link">Share</a>
       
       
         <a href="http://www.jjuina.com/2017/12/20/what-we-should-know-about-web-dev/#disqus_thread" class="article-comment-link">Comments</a>
@@ -339,7 +267,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.jjuina.com/2017/11/01/Freemarker/" data-id="ck92uka4000060wuraccqgjmv" class="article-share-link">Share</a>
+      <a data-url="http://www.jjuina.com/2017/11/01/Freemarker/" data-id="ck92vbckw0003fzur2dot8pb9" class="article-share-link">Share</a>
       
       
         <a href="http://www.jjuina.com/2017/11/01/Freemarker/#disqus_thread" class="article-comment-link">Comments</a>
@@ -387,7 +315,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.jjuina.com/2017/09/08/backbone/" data-id="ck92uka4e00130wur35t36i94" class="article-share-link">Share</a>
+      <a data-url="http://www.jjuina.com/2017/09/08/backbone/" data-id="ck92vbclh0015fzurhp8m7dvu" class="article-share-link">Share</a>
       
       
         <a href="http://www.jjuina.com/2017/09/08/backbone/#disqus_thread" class="article-comment-link">Comments</a>
@@ -437,7 +365,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.jjuina.com/2017/08/26/front-end-survey/" data-id="ck92uka4u001v0wur5gvi2qal" class="article-share-link">Share</a>
+      <a data-url="http://www.jjuina.com/2017/08/26/front-end-survey/" data-id="ck92vbclj0019fzur2d8lgi59" class="article-share-link">Share</a>
       
       
         <a href="http://www.jjuina.com/2017/08/26/front-end-survey/#disqus_thread" class="article-comment-link">Comments</a>
@@ -485,7 +413,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.jjuina.com/2017/08/16/gulp/" data-id="ck92uka4w001y0wurewobar7s" class="article-share-link">Share</a>
+      <a data-url="http://www.jjuina.com/2017/08/16/gulp/" data-id="ck92vbcly0021fzur58h60ra2" class="article-share-link">Share</a>
       
       
         <a href="http://www.jjuina.com/2017/08/16/gulp/#disqus_thread" class="article-comment-link">Comments</a>
@@ -536,7 +464,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.jjuina.com/2017/08/16/the-part-of-web-server/" data-id="ck92uka4y00240wur9ppbhi1t" class="article-share-link">Share</a>
+      <a data-url="http://www.jjuina.com/2017/08/16/the-part-of-web-server/" data-id="ck92vbcm1002cfzur1gunhpua" class="article-share-link">Share</a>
       
       
         <a href="http://www.jjuina.com/2017/08/16/the-part-of-web-server/#disqus_thread" class="article-comment-link">Comments</a>
@@ -584,13 +512,62 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.jjuina.com/2017/08/14/front-end-developer/" data-id="ck92uka4t001t0wur11k23bc0" class="article-share-link">Share</a>
+      <a data-url="http://www.jjuina.com/2017/08/14/front-end-developer/" data-id="ck92vbclw001wfzurbpjk3brj" class="article-share-link">Share</a>
       
       
         <a href="http://www.jjuina.com/2017/08/14/front-end-developer/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Front-End/" rel="tag">Front-End</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-flux" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/08/flux/" class="article-date">
+  <time datetime="2017-08-07T16:00:00.000Z" itemprop="datePublished">2017-08-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/08/flux/">Flux</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Flux是一种设计模式，单项数据流的设计模式。</p>
+<p>在高互动的前端应用中，应用程序的数据状态和使用者的操作时间，是最伤脑筋的地方。例如当用户更新个人资料-头像，状态更新，必须刷新UI。<br>因此，当我们在处理事件改变状态，状态刷新UI，这类复杂的互动时，就非常需要一个模式来规范应用程序的数据流，Flux就是这样一个规范。</p>
+<p><img src="https://github.com/RoyJia/mdimgs/raw/master/res/flux-flow.png" alt=""></p>
+        
+          <p class="article-more-link">
+            <a href="/2017/08/08/flux/#more">Read More »</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.jjuina.com/2017/08/08/flux/" data-id="ck92vbclg0013fzur6nmc3p4r" class="article-share-link">Share</a>
+      
+      
+        <a href="http://www.jjuina.com/2017/08/08/flux/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Flux/" rel="tag">Flux</a></li></ul>
 
     </footer>
   </div>
@@ -626,10 +603,6 @@
       <ul>
         
           <li>
-            <a href="/2020/04/16/no-tile/">no-tile</a>
-          </li>
-        
-          <li>
             <a href="/2018/09/08/useful-apps-on-windows/">Useful app on windows</a>
           </li>
         
@@ -643,6 +616,10 @@
         
           <li>
             <a href="/2018/09/02/Web-Scraping-with-Python/">What I get from Web Scraping with Python</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/11/Shit-Scala/">Shit Scala</a>
           </li>
         
       </ul>
