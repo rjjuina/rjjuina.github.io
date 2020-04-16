@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>gulp | Roy Jia&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言今天碰到一个问题，在build项目，跑gulpjs的时候出现了问题，gulp的一个task（check-complexity）失败了。一直无法定位问题所在，所以来研究一下gulpjs到底是个什么鬼。希望经过一番研究之后能够找到解决办法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gulp">
+<meta property="og:url" content="http://www.jjuina.com/2017/08/16/gulp/index.html">
+<meta property="og:site_name" content="Roy Jia&#39;s Blog">
+<meta property="og:description" content="前言今天碰到一个问题，在build项目，跑gulpjs的时候出现了问题，gulp的一个task（check-complexity）失败了。一直无法定位问题所在，所以来研究一下gulpjs到底是个什么鬼。希望经过一番研究之后能够找到解决办法。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/RoyJia/mdimgs/raw/master/res/gulp-logo.png">
+<meta property="og:image" content="https://github.com/RoyJia/mdimgs/raw/master/res/gulp-stream.png">
+<meta property="article:published_time" content="2017-08-15T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-04-16T13:27:21.704Z">
+<meta property="article:author" content="Roy Jia">
+<meta property="article:tag" content="Gulp">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/RoyJia/mdimgs/raw/master/res/gulp-logo.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Roy Jia&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.jjuina.com"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">HomePage</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Roy Jia&#39;s Blog</a>
+      </h1>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-gulp" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/16/gulp/" class="article-date">
+  <time datetime="2017-08-15T16:00:00.000Z" itemprop="datePublished">2017-08-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      gulp
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><img src="https://github.com/RoyJia/mdimgs/raw/master/res/gulp-logo.png" alt=""></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天碰到一个问题，在build项目，跑gulpjs的时候出现了问题，gulp的一个task（check-complexity）失败了。一直无法定位问题所在，所以来研究一下gulpjs到底是个什么鬼。<br>希望经过一番研究之后能够找到解决办法。</p>
+<a id="more"></a>
+
+<blockquote>
+<p>Question：gulp是什么鬼东西？作用是什么？</p>
+</blockquote>
+<ul>
+<li>是一个压缩文件（将多个文件-css/js压缩到一个文件中）的工具吗？不是，或者说压缩多文件是它的功能中的一种。有了，是一种自动化的工具。</li>
+<li>gulp能作什么 - 对项目中的js/less/sass/html/css…进行测试、检查、合并、压缩、格式化、部署和监听。说白了就是对文件(js,sass,less…)写入内存，进行任务处理，再写出到磁盘。</li>
+</ul>
+<p><img src="https://github.com/RoyJia/mdimgs/raw/master/res/gulp-stream.png" alt=""></p>
+<h3 id="gulp-API"><a href="#gulp-API" class="headerlink" title="gulp API"></a>gulp API</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gulp.src：获取文件</span><br><span class="line">gulp.dest：写入文件</span><br><span class="line">gulp.tasks：注册任务</span><br><span class="line">gulp.watch：监控文件的改动</span><br></pre></td></tr></table></figure>
+
+<h3 id="核心配置文件-gulpfile-js"><a href="#核心配置文件-gulpfile-js" class="headerlink" title="核心配置文件 - gulpfile.js"></a>核心配置文件 - gulpfile.js</h3><p>示例代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(<span class="string">'min-css'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    gulp.src(<span class="string">'./src/css/*.css'</span>)</span><br><span class="line">      .pipe(gulp_concat(<span class="string">"index.min.css"</span>))</span><br><span class="line">      .pipe(minify_css())</span><br><span class="line">      .pipe(gulp.dest(<span class="string">'./dist/css'</span>));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Reference-Link"><a href="#Reference-Link" class="headerlink" title="Reference Link"></a>Reference Link</h2><ul>
+<li><a href="https://segmentfault.com/a/1190000003003847" target="_blank" rel="noopener">https://segmentfault.com/a/1190000003003847</a></li>
+<li><a href="https://segmentfault.com/a/1190000006873386" target="_blank" rel="noopener">https://segmentfault.com/a/1190000006873386</a></li>
+<li>gulp官方网址：<a href="http://gulpjs.com" target="_blank" rel="noopener">http://gulpjs.com</a></li>
+<li>gulp插件地址：<a href="http://gulpjs.com/plugins" target="_blank" rel="noopener">http://gulpjs.com/plugins</a></li>
+<li>gulp 官方API：<a href="https://github.com/gulpjs/gulp/blob/master/docs/API.md" target="_blank" rel="noopener">https://github.com/gulpjs/gulp/blob/master/docs/API.md</a></li>
+<li>gulp 中文API：<a href="http://www.ydcss.com/archives/424" target="_blank" rel="noopener">http://www.ydcss.com/archives/424</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.jjuina.com/2017/08/16/gulp/" data-id="ck92texlw001jl1urelgfdah2" class="article-share-link">Share</a>
+      
+      
+        <a href="http://www.jjuina.com/2017/08/16/gulp/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gulp/" rel="tag">Gulp</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+ 
+<script src="/jquery/jquery.min.js"></script>
+
+  <div id="random_posts">
+    <h2>Recommended Posts</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =4
+          var site = {BASE_URI:'/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+    <a href="/2017/08/26/front-end-survey/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Front-End Survey
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/08/16/the-part-of-web-server/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">The Part of Web Server</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+      </section>
+      
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">Content</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#gulp-API"><span class="toc-number">1.1.</span> <span class="toc-text">gulp API</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#核心配置文件-gulpfile-js"><span class="toc-number">1.2.</span> <span class="toc-text">核心配置文件 - gulpfile.js</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference-Link"><span class="toc-number">2.</span> <span class="toc-text">Reference Link</span></a></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2020 Roy Jia&nbsp;|&nbsp;
+      Theme by <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      Contact&nbsp;|&nbsp;roy.jia@outlook.com
+    </div>
+  </div>
+</footer>
+ 
+<script src="/jquery/jquery.min.js"></script>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">HomePage</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+<script>
+  var disqus_shortname = 'jjuina';
+  
+  var disqus_url = 'http://www.jjuina.com/2017/08/16/gulp/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ 
+<script src="/js/is.js"></script>
+
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/elevator.js"></script>
+
+  </div>
+</body>
+</html>

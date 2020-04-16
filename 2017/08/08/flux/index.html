@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Flux | Roy Jia&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Flux是一种设计模式，单项数据流的设计模式。 在高互动的前端应用中，应用程序的数据状态和使用者的操作时间，是最伤脑筋的地方。例如当用户更新个人资料-头像，状态更新，必须刷新UI。因此，当我们在处理事件改变状态，状态刷新UI，这类复杂的互动时，就非常需要一个模式来规范应用程序的数据流，Flux就是这样一个规范。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flux">
+<meta property="og:url" content="http://www.jjuina.com/2017/08/08/flux/index.html">
+<meta property="og:site_name" content="Roy Jia&#39;s Blog">
+<meta property="og:description" content="Flux是一种设计模式，单项数据流的设计模式。 在高互动的前端应用中，应用程序的数据状态和使用者的操作时间，是最伤脑筋的地方。例如当用户更新个人资料-头像，状态更新，必须刷新UI。因此，当我们在处理事件改变状态，状态刷新UI，这类复杂的互动时，就非常需要一个模式来规范应用程序的数据流，Flux就是这样一个规范。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/RoyJia/mdimgs/raw/master/res/flux-flow.png">
+<meta property="article:published_time" content="2017-08-07T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-04-16T13:27:21.704Z">
+<meta property="article:author" content="Roy Jia">
+<meta property="article:tag" content="Flux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/RoyJia/mdimgs/raw/master/res/flux-flow.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Roy Jia&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.jjuina.com"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">HomePage</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Roy Jia&#39;s Blog</a>
+      </h1>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-flux" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/08/flux/" class="article-date">
+  <time datetime="2017-08-07T16:00:00.000Z" itemprop="datePublished">2017-08-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Flux
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>Flux是一种设计模式，单项数据流的设计模式。</p>
+<p>在高互动的前端应用中，应用程序的数据状态和使用者的操作时间，是最伤脑筋的地方。例如当用户更新个人资料-头像，状态更新，必须刷新UI。<br>因此，当我们在处理事件改变状态，状态刷新UI，这类复杂的互动时，就非常需要一个模式来规范应用程序的数据流，Flux就是这样一个规范。</p>
+<p><img src="https://github.com/RoyJia/mdimgs/raw/master/res/flux-flow.png" alt=""></p>
+<a id="more"></a>
+
+<p>Flux中的四个角色：Action/Dispatcher/Store/View<br>Action：规范所有改变数据的动作，也就是所有的操作事件定义在Action中，事件集合；<br>Dispatcher：将当前发生的行为，告知所有已注册的store；<br>Store：存放数据和业务逻辑，并且只提供getter API供取得数据，数据集合；<br>View：根据数据渲染UI和监听使用者的操作事件，UI集合。</p>
+<h3 id="Dispathcer"><a href="#Dispathcer" class="headerlink" title="Dispathcer"></a><strong>Dispathcer</strong></h3><p>职责：</p>
+<ol>
+<li>提供API让Store注册callback；</li>
+<li>提供API让Action Creator传送action单位；</li>
+<li>将action单位传送给所有已注册的Store。</li>
+</ol>
+<p>有两个行为：<br>register - 在Store中使用register()注册callback<br>dispatch - 在Action Creator中，使用dispatch()将action广播给所有已经注册的callback function</p>
+<h3 id="Store"><a href="#Store" class="headerlink" title="Store"></a><strong>Store</strong></h3><p>问：Store是react中的state吗？<br>回答：react中的state，只是一个数据集，当其改变的时候，会重新render UI。Store不仅仅是一个数据集，其中还包含业务逻辑；当Store数据更新完成后，要告诉前端页面re-render UI，但是Store并不是state，所以View会监听Store的更新。如果是搭配react作为View的话，可能会在componentDidMount时，binding一个Store listener。<br>componentDidMount: function () {<br>PhotoStore.bind(‘change’, this.photoChange);<br>}</p>
+<p>使用Flux的意义是什么？<br>Flux明确规范每个参与角色的职责。</p>
+<ol>
+<li>通过Action，可以快速掌握App的所有行为；</li>
+<li>通过Store，清楚数据和业务逻辑；</li>
+<li>View只需要关心UI的排版。</li>
+</ol>
+<p>是否应该使用Flux？<br>如果应用程序需要处理动态数据，则推荐使用Flux；相反，如果只是静态数据的APP，则完全没有必要使用Flux。</p>
+<h2 id="Reference-Link"><a href="#Reference-Link" class="headerlink" title="Reference Link"></a>Reference Link</h2><p><a href="http://blog.andrewray.me/flux-for-stupid-people/" target="_blank" rel="noopener">http://blog.andrewray.me/flux-for-stupid-people/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.jjuina.com/2017/08/08/flux/" data-id="ck92texlr0014l1ur2erw903n" class="article-share-link">Share</a>
+      
+      
+        <a href="http://www.jjuina.com/2017/08/08/flux/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Flux/" rel="tag">Flux</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+ 
+<script src="/jquery/jquery.min.js"></script>
+
+  <div id="random_posts">
+    <h2>Recommended Posts</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =4
+          var site = {BASE_URI:'/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+    <a href="/2017/08/14/front-end-developer/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Front-End Developer
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/08/02/progressive-web-app-for-user-experience/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Progressive Web App for User Experience</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+      </section>
+      
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">Content</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Dispathcer"><span class="toc-number">1.</span> <span class="toc-text">Dispathcer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Store"><span class="toc-number">2.</span> <span class="toc-text">Store</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference-Link"><span class="toc-number"></span> <span class="toc-text">Reference Link</span></a>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2020 Roy Jia&nbsp;|&nbsp;
+      Theme by <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      Contact&nbsp;|&nbsp;roy.jia@outlook.com
+    </div>
+  </div>
+</footer>
+ 
+<script src="/jquery/jquery.min.js"></script>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">HomePage</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+<script>
+  var disqus_shortname = 'jjuina';
+  
+  var disqus_url = 'http://www.jjuina.com/2017/08/08/flux/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ 
+<script src="/js/is.js"></script>
+
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/elevator.js"></script>
+
+  </div>
+</body>
+</html>
