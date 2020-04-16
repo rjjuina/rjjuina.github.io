@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Positioning text element into rectangle central | Roy Jia&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Overview接上篇。 1234&lt;g id&#x3D;&quot;seat_2&quot;&gt;  &lt;rect width&#x3D;&quot;50&quot; height&#x3D;&quot;25&quot; x&#x3D;&quot;50&quot; y&#x3D;&quot;25&quot; stroke-width&#x3D;&quot;1.5&quot; stroke&#x3D;&quot;#000000&quot; fill&#x3D;&quot;#49DD8E&quot;&gt;&lt;&#x2F;rect&gt;  &lt;text id&#x3D;&quot;text_seat_2&quot; x&#x3D;&quot;75&quot; y&#x3D;&quot;37.5&quot; fil">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Positioning text element into rectangle central">
+<meta property="og:url" content="http://www.jjuina.com/uncategorized/SVG-text-position">
+<meta property="og:site_name" content="Roy Jia&#39;s Blog">
+<meta property="og:description" content="Overview接上篇。 1234&lt;g id&#x3D;&quot;seat_2&quot;&gt;  &lt;rect width&#x3D;&quot;50&quot; height&#x3D;&quot;25&quot; x&#x3D;&quot;50&quot; y&#x3D;&quot;25&quot; stroke-width&#x3D;&quot;1.5&quot; stroke&#x3D;&quot;#000000&quot; fill&#x3D;&quot;#49DD8E&quot;&gt;&lt;&#x2F;rect&gt;  &lt;text id&#x3D;&quot;text_seat_2&quot; x&#x3D;&quot;75&quot; y&#x3D;&quot;37.5&quot; fil">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/RoyJia/mdimgs/raw/master/res/text-anchor.png">
+<meta property="article:published_time" content="2018-06-18T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-04-16T13:27:21.702Z">
+<meta property="article:author" content="Roy Jia">
+<meta property="article:tag" content="SVG">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/RoyJia/mdimgs/raw/master/res/text-anchor.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Roy Jia&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.jjuina.com"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">HomePage</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Roy Jia&#39;s Blog</a>
+      </h1>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-SVG-text-position" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/uncategorized/SVG-text-position" class="article-date">
+  <time datetime="2018-06-18T16:00:00.000Z" itemprop="datePublished">2018-06-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Positioning text element into rectangle central
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>接上篇。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">g</span> <span class="attr">id</span>=<span class="string">"seat_2"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">rect</span> <span class="attr">width</span>=<span class="string">"50"</span> <span class="attr">height</span>=<span class="string">"25"</span> <span class="attr">x</span>=<span class="string">"50"</span> <span class="attr">y</span>=<span class="string">"25"</span> <span class="attr">stroke-width</span>=<span class="string">"1.5"</span> <span class="attr">stroke</span>=<span class="string">"#000000"</span> <span class="attr">fill</span>=<span class="string">"#49DD8E"</span>&gt;</span><span class="tag">&lt;/<span class="name">rect</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">text</span> <span class="attr">id</span>=<span class="string">"text_seat_2"</span> <span class="attr">x</span>=<span class="string">"75"</span> <span class="attr">y</span>=<span class="string">"37.5"</span> <span class="attr">fill</span>=<span class="string">"#333"</span> <span class="attr">text-anchor</span>=<span class="string">"middle"</span> <span class="attr">dominant-baseline</span>=<span class="string">"central"</span>&gt;</span>Thor<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">g</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>我的目的就是将同一个 group 中的 text 定位到 rectangle 中间的位置。由于只考虑到 text 的坐标 baseline 是文本左下角的坐标（基点），所以考虑如何通过已知的值确定这个坐标，所以才有了上篇文档中描述的思路。但其实根本就不需要去考虑这个问题，因为 text 的坐标 baseline 是可以改变的，只需要让 text 的基点变成文本中间点的坐标就可以了。</p>
+<a id="more"></a>
+
+<h3 id="SVG-text-对齐方式"><a href="#SVG-text-对齐方式" class="headerlink" title="SVG text 对齐方式"></a>SVG text 对齐方式</h3><p>text 的位置由<code>(x, y)</code>决定，而这个坐标默认是文本左下角的位置坐标。但其实 SVG 已经提供了方法改变这个基点。</p>
+<h4 id="text-anchor"><a href="#text-anchor" class="headerlink" title="text-anchor"></a>text-anchor</h4><p><code>text-anchor</code> 属性可以改变 <code>(x,y)</code> 作为起始坐标的定义。<br><code>text-anchor=”start”</code> 时，<code>(x,y)</code> 为的起始坐标。<br><code>text-anchor=”middle”</code> 时，<code>(x,y)</code> 为的中轴坐标。<br><code>text-anchor=”end”</code> 时，<code>(x,y)</code> 为的结束坐标。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">g</span> <span class="attr">style</span>=<span class="string">"font-size: 14pt;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">path</span> <span class="attr">d</span>=<span class="string">"M 100 10 100 100"</span> <span class="attr">style</span>=<span class="string">"stroke: gray; fill: none;"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">text</span> <span class="attr">x</span>=<span class="string">"100"</span> <span class="attr">y</span>=<span class="string">"30"</span> <span class="attr">style</span>=<span class="string">"text-anchor: start"</span>&gt;</span>Start<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">text</span> <span class="attr">x</span>=<span class="string">"100"</span> <span class="attr">y</span>=<span class="string">"60"</span> <span class="attr">style</span>=<span class="string">"text-anchor: middle"</span>&gt;</span>Middle<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">text</span> <span class="attr">x</span>=<span class="string">"100"</span> <span class="attr">y</span>=<span class="string">"90"</span> <span class="attr">style</span>=<span class="string">"text-anchor: end"</span>&gt;</span>End<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">g</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://github.com/RoyJia/mdimgs/raw/master/res/text-anchor.png" alt=""></p>
+<p>同理，dominant-baseline 属性可以纵向改变基点坐标的定义。</p>
+<h2 id="Reference-Links"><a href="#Reference-Links" class="headerlink" title="Reference Links"></a>Reference Links</h2><p><a href="https://segmentfault.com/a/1190000009293590" target="_blank" rel="noopener">SVG之text</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.jjuina.com/uncategorized/SVG-text-position" data-id="ck92t2u8d000d4durfswd29cn" class="article-share-link">Share</a>
+      
+      
+        <a href="http://www.jjuina.com/uncategorized/SVG-text-position#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SVG/" rel="tag">SVG</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+ 
+<script src="/jquery/jquery.min.js"></script>
+
+  <div id="random_posts">
+    <h2>Recommended Posts</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =4
+          var site = {BASE_URI:'/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+    <a href="/uncategorized/python-wrapper" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          python wrapper
+        
+      </div>
+    </a>
+  
+  
+    <a href="/uncategorized/Getting-the-pixel-width-height-of-text" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Getting the pixel width/height of text on a web page</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+      </section>
+      
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">Content</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Overview"><span class="toc-number">1.</span> <span class="toc-text">Overview</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SVG-text-对齐方式"><span class="toc-number">1.1.</span> <span class="toc-text">SVG text 对齐方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#text-anchor"><span class="toc-number">1.1.1.</span> <span class="toc-text">text-anchor</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference-Links"><span class="toc-number">2.</span> <span class="toc-text">Reference Links</span></a></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2020 Roy Jia&nbsp;|&nbsp;
+      Theme by <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      Contact&nbsp;|&nbsp;roy.jia@outlook.com
+    </div>
+  </div>
+</footer>
+ 
+<script src="/jquery/jquery.min.js"></script>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">HomePage</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+<script>
+  var disqus_shortname = 'jjuina';
+  
+  var disqus_url = 'http://www.jjuina.com/uncategorized/SVG-text-position';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ 
+<script src="/js/is.js"></script>
+
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/elevator.js"></script>
+
+  </div>
+</body>
+</html>

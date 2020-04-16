@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Freemarker | Roy Jia&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="http:&#x2F;&#x2F;freemarker.org&#x2F;FreeMarkerApache FreeMarker is a template engine: a java library to generate text output (HTML web pages, e- We all heard FTL&#x2F;JSPWe want to create a template to use anywhere. Fro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Freemarker">
+<meta property="og:url" content="http://www.jjuina.com/uncategorized/Freemarker">
+<meta property="og:site_name" content="Roy Jia&#39;s Blog">
+<meta property="og:description" content="http:&#x2F;&#x2F;freemarker.org&#x2F;FreeMarkerApache FreeMarker is a template engine: a java library to generate text output (HTML web pages, e- We all heard FTL&#x2F;JSPWe want to create a template to use anywhere. Fro">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/RoyJia/mdimgs/raw/master/res/freemarker-logo.png">
+<meta property="og:image" content="https://github.com/RoyJia/mdimgs/raw/master/res/ftl-flow.png">
+<meta property="og:image" content="https://github.com/RoyJia/mdimgs/raw/master/res/ftl-data-model.png">
+<meta property="article:published_time" content="2017-10-31T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-04-16T13:27:21.701Z">
+<meta property="article:author" content="Roy Jia">
+<meta property="article:tag" content="Freemarker">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/RoyJia/mdimgs/raw/master/res/freemarker-logo.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Roy Jia&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.jjuina.com"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">HomePage</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Roy Jia&#39;s Blog</a>
+      </h1>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Freemarker" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/uncategorized/Freemarker" class="article-date">
+  <time datetime="2017-10-31T16:00:00.000Z" itemprop="datePublished">2017-11-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Freemarker
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><img src="https://github.com/RoyJia/mdimgs/raw/master/res/freemarker-logo.png" alt="Freemarker logo"><br><a href="http://freemarker.org/" target="_blank" rel="noopener">http://freemarker.org/</a><br><strong>FreeMarker</strong><br>Apache FreeMarker is a template engine: a java library to generate text output (HTML web pages, e-</p>
+<p>We all heard FTL/JSP<br>We want to create a template to use anywhere. From the tech point, we have Java Server Page first. I don’t know what is ftl before and when it was defined. For now, I still don’t know how to describe it or clarify it to others.</p>
+<a id="more"></a>
+
+<h3 id="What-is-FTL"><a href="#What-is-FTL" class="headerlink" title="What is FTL?"></a>What is FTL?</h3><blockquote>
+<p>FTL = Freemarker Template Language</p>
+</blockquote>
+<p>From the definition of FTL, it’s language exactly. And it’s based on templates and changing data, templates are written in the FreeMarker Template Language.<br>The important thing is that the templates displays that already prepared data.<br><img src="https://github.com/RoyJia/mdimgs/raw/master/res/ftl-flow.png" alt="FTL date flow"></p>
+<h3 id="Feature"><a href="#Feature" class="headerlink" title="Feature"></a>Feature</h3><p>Highlights of FreeMarker:</p>
+<ul>
+<li>Powerful template language: Conditional blocks, iterations, assignments, string and arithmetic operations and formatting, macros and functions, including other templates, escaping by default(optional);</li>
+<li>XML processing capabilities: Drop XML DOM-s into the data-model and traverse them, or even process them declaratively;</li>
+<li>Versatile data-model: Java objects are exposed to the templates as a tree of variables through pluggable adapters, which decides the template sees them.</li>
+</ul>
+<h3 id="Data-Model"><a href="#Data-Model" class="headerlink" title="Data-Model"></a>Data-Model</h3><p><img src="https://github.com/RoyJia/mdimgs/raw/master/res/ftl-data-model.png" alt="FTL data model"></p>
+<ul>
+<li>Hashes - The variables that act like directories are called hashes. animals.mouse.price</li>
+<li>Scalars - The variables that store a single value are called scalars. message</li>
+<li>Sequences - The subvariables are just in a list. misc.fruits[0]</li>
+</ul>
+<p>Data-Model to Template</p>
+<ul>
+<li><code>${…}</code>: FreeMarker will replace it in the output with actual value of the expression inside the curly brackets. They are called interpolations.</li>
+<li>FTL Tags: FTL tags are a bit similar to HTML tags, but they are instruction to FreeMarker and will not be printed to the output. The name of these tags start with <code>#</code>.(User defined FTL tag use <code>@</code> instead of <code>#</code>)</li>
+<li>Comments: Comments are similar to HTML comments, but they are delimited by <code>&lt;#-- and --&gt;</code>, unlike HTML comments, FTL comments won’t get into the output (won’t be visible in the page source for a visitor). Because FreeMarker skips them.</li>
+</ul>
+<h3 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h3><p><a href="https://freemarker.apache.org/docs/dgui_quickstart_template.html" target="_blank" rel="noopener">https://freemarker.apache.org/docs/dgui_quickstart_template.html</a></p>
+<p>Dealing with missing variables<br>Regarding variable accessing with multiple steps, like <code>animals.python.price</code>, writing <code>animals.python.price!0</code> is correct only if <code>animals.python</code> is never missing and only the last subvariable, <code>price</code> is possibly missing (in which case here we assume it’s <code>0</code>). If <code>animals</code> or <code>python</code> is missing, the template processing will stop with an “undefined variable” error. To prevent that, you have to write <code>(animals.python.price)!0</code>. In that case the expression will be <code>0</code> even if <code>animals</code> or <code>python</code> is missing. Same logic goes for <code>??</code>; <code>animals.python.price??</code> versus <code>(animals.python.price)??</code>.</p>
+<h4 id="Warning"><a href="#Warning" class="headerlink" title="Warning!"></a>Warning!</h4><p>A frequent mistake of users is the usage of interpolations in places where they needn’t/shouldn’t/can’t be used. Interpolations work only in text sections (e.g. <code>&lt;h1&gt;Hello ${name}!&lt;/h1&gt;</code>) and in string literals (e.g. <code>&lt;#include &quot;/footer/${company}.html&quot;&gt;</code>). A typical WRONG usage is <code>&lt;#if big&gt;...&lt;/#if&gt;</code>, which will cause a syntactical error. You should simply write <code>&lt;#if big&gt;...&lt;/#if&gt;</code>. Also, <code>&lt;#if &quot;${big}&quot;&gt;...&lt;/#if&gt;</code> is WRONG, since it converts the parameter value to string and the if directive wants a boolean value, so it will cause a runtime error.</p>
+<p><code>&lt;@greet color=&quot;black&quot; person=&quot;Fred&quot;/&gt;</code></p>
+<p>When you call the macro, you can use only parameters that you have defined in the macro directive (in this case: person and color). So if you try <code>&lt;@greet person=&quot;Fred&quot; color=&quot;black&quot; background=&quot;green&quot;/&gt;</code> then you will get an error, since you haven’t mentioned parameter background in the <code>&lt;#macro ...&gt;</code>.</p>
+<p>Creating a library/Writing the variables of imported namespaces - <a href="https://freemarker.apache.org/docs/dgui_misc_namespace.html" target="_blank" rel="noopener">https://freemarker.apache.org/docs/dgui_misc_namespace.html</a></p>
+<p>Data-model 不仅包含常规类型的数据（like String, Number, Boolean…) 还包含 Method implements <code>TemplateMethodModel</code> or Directive <code>TemplateDirectiveModel</code></p>
+<h3 id="Maven-Support"><a href="#Maven-Support" class="headerlink" title="Maven Support"></a>Maven Support</h3><p>Latest version is 2.3.27-incubating - <a href="https://freemarker.apache.org/freemarkerdownload.html" target="_blank" rel="noopener">Download</a></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.freemarker<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>freemarker<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.3.27-incubating<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>In order to process with SpringMVC, also the spring-context-support dependency should be added</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-context-support<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;org.springframework-version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="GitHub-repo"><a href="#GitHub-repo" class="headerlink" title="GitHub repo"></a>GitHub repo</h3><p><a href="https://github.com/RoyJia/jjuina" target="_blank" rel="noopener">https://github.com/RoyJia/jjuina</a> - Spring MVC + Freemarker</p>
+<h2 id="Reference-Links"><a href="#Reference-Links" class="headerlink" title="Reference Links"></a>Reference Links</h2><ul>
+<li><a href="http://freemarker.org/" target="_blank" rel="noopener">http://freemarker.org/</a></li>
+<li><a href="https://rajinnovations.wordpress.com/tag/free-marker/" target="_blank" rel="noopener">https://rajinnovations.wordpress.com/tag/free-marker/</a></li>
+<li><a href="http://www.baeldung.com/freemarker-in-spring-mvc-tutorial" target="_blank" rel="noopener">http://www.baeldung.com/freemarker-in-spring-mvc-tutorial</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.jjuina.com/uncategorized/Freemarker" data-id="ck92t2u8900054dur66xhf9ye" class="article-share-link">Share</a>
+      
+      
+        <a href="http://www.jjuina.com/uncategorized/Freemarker#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Freemarker/" rel="tag">Freemarker</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+ 
+<script src="/jquery/jquery.min.js"></script>
+
+  <div id="random_posts">
+    <h2>Recommended Posts</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =4
+          var site = {BASE_URI:'/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+    <a href="/uncategorized/what-we-should-know-about-web-dev" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          what we should know about web dev
+        
+      </div>
+    </a>
+  
+  
+    <a href="/uncategorized/backbone" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Backbone</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+      </section>
+      
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">Content</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#What-is-FTL"><span class="toc-number">1.</span> <span class="toc-text">What is FTL?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Feature"><span class="toc-number">2.</span> <span class="toc-text">Feature</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Data-Model"><span class="toc-number">3.</span> <span class="toc-text">Data-Model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Tips"><span class="toc-number">4.</span> <span class="toc-text">Tips</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Warning"><span class="toc-number">4.1.</span> <span class="toc-text">Warning!</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Maven-Support"><span class="toc-number">5.</span> <span class="toc-text">Maven Support</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GitHub-repo"><span class="toc-number">6.</span> <span class="toc-text">GitHub repo</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference-Links"><span class="toc-number"></span> <span class="toc-text">Reference Links</span></a>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2020 Roy Jia&nbsp;|&nbsp;
+      Theme by <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      Contact&nbsp;|&nbsp;roy.jia@outlook.com
+    </div>
+  </div>
+</footer>
+ 
+<script src="/jquery/jquery.min.js"></script>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">HomePage</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+<script>
+  var disqus_shortname = 'jjuina';
+  
+  var disqus_url = 'http://www.jjuina.com/uncategorized/Freemarker';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ 
+<script src="/js/is.js"></script>
+
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/elevator.js"></script>
+
+  </div>
+</body>
+</html>

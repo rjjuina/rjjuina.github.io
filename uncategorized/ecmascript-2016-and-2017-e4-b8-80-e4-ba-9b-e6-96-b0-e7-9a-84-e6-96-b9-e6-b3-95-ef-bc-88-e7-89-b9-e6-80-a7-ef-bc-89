@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>ECMAScript 2016 and 2017 一些新的方法（特性） | Roy Jia&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Array.prototype.includes()includes 是数组Array的一个简单的实例方法，可以轻松查找数组中是否存在某个项目（甚至可以查找NaN这样的元素，不像indexOf）。 12345678910111213const arr &#x3D; [1, 2, 3, 4, NaN];if(arr.indexof(3) &gt;&#x3D; 0) &amp;#123;    console.log(true">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ECMAScript 2016 and 2017 一些新的方法（特性）">
+<meta property="og:url" content="http://www.jjuina.com/uncategorized/ecmascript-2016-and-2017-e4-b8-80-e4-ba-9b-e6-96-b0-e7-9a-84-e6-96-b9-e6-b3-95-ef-bc-88-e7-89-b9-e6-80-a7-ef-bc-89">
+<meta property="og:site_name" content="Roy Jia&#39;s Blog">
+<meta property="og:description" content="Array.prototype.includes()includes 是数组Array的一个简单的实例方法，可以轻松查找数组中是否存在某个项目（甚至可以查找NaN这样的元素，不像indexOf）。 12345678910111213const arr &#x3D; [1, 2, 3, 4, NaN];if(arr.indexof(3) &gt;&#x3D; 0) &amp;#123;    console.log(true">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/RoyJia/mdimgs/raw/master/res/ECMAScript-2016.png">
+<meta property="og:image" content="https://github.com/RoyJia/mdimgs/raw/master/res/ECMAScript-2017.png">
+<meta property="article:published_time" content="2018-04-08T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-04-16T13:27:21.704Z">
+<meta property="article:author" content="Roy Jia">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/RoyJia/mdimgs/raw/master/res/ECMAScript-2016.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Roy Jia&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.jjuina.com"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">HomePage</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Roy Jia&#39;s Blog</a>
+      </h1>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-ecmascript-2016-and-2017-e4-b8-80-e4-ba-9b-e6-96-b0-e7-9a-84-e6-96-b9-e6-b3-95-ef-bc-88-e7-89-b9-e6-80-a7-ef-bc-89" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/uncategorized/ecmascript-2016-and-2017-e4-b8-80-e4-ba-9b-e6-96-b0-e7-9a-84-e6-96-b9-e6-b3-95-ef-bc-88-e7-89-b9-e6-80-a7-ef-bc-89" class="article-date">
+  <time datetime="2018-04-08T16:00:00.000Z" itemprop="datePublished">2018-04-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ECMAScript 2016 and 2017 一些新的方法（特性）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><img src="https://github.com/RoyJia/mdimgs/raw/master/res/ECMAScript-2016.png" alt="ECMAScript 2016"></p>
+<h2 id="Array-prototype-includes"><a href="#Array-prototype-includes" class="headerlink" title="Array.prototype.includes()"></a>Array.prototype.includes()</h2><p><code>includes</code> 是数组Array的一个简单的实例方法，可以轻松查找数组中是否存在某个项目（甚至可以查找<code>NaN</code>这样的元素，不像<code>indexOf</code>）。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="literal">NaN</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(arr.indexof(<span class="number">3</span>) &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="literal">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(arr.includes(<span class="number">3</span>)) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="literal">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// PS: indexOf doesn't work for searching NaN</span></span><br><span class="line">arr.includes(<span class="literal">NaN</span>); <span class="comment">// true</span></span><br><span class="line">arr.indexOf(<span class="literal">NaN</span>); <span class="comment">// -1 (doesn't work for NaN)</span></span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h2 id="Exponentiation-infix-operator-指数运算符"><a href="#Exponentiation-infix-operator-指数运算符" class="headerlink" title="Exponentiation infix operator - 指数运算符"></a>Exponentiation infix operator - 指数运算符</h2><p>ES2016之后，可以使用 <code>**</code> 代替 <code>Math.pow</code>，实现指数运算。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Math</span>.pow(<span class="number">2</span>, <span class="number">3</span>); <span class="comment">// 8</span></span><br><span class="line"></span><br><span class="line"><span class="number">2</span>**<span class="number">3</span>; <span class="comment">// 8</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://github.com/RoyJia/mdimgs/raw/master/res/ECMAScript-2017.png" alt="ECMAScript 2017"></p>
+<h2 id="Object-values"><a href="#Object-values" class="headerlink" title="Object.values()"></a>Object.values()</h2><p><code>Object.values()</code> 是一个类似于 <code>Object.keys()</code> 的新方法，返回对象自身属性的所有值，但不包括原型链（prototypical chain）中的任何值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> cars = &#123; <span class="attr">BMW</span>: <span class="number">3</span>, <span class="attr">Tesla</span>: <span class="number">2</span>, <span class="attr">Toyota</span>: <span class="number">1</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES2015</span></span><br><span class="line"><span class="keyword">const</span> vals = <span class="built_in">Object</span>.keys(cars).map(<span class="function"><span class="params">key</span> =&gt;</span> cars[key])；</span><br><span class="line"><span class="built_in">console</span>.log(vals); <span class="comment">// [ 3, 2, 1 ]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ES2017 and onwards</span></span><br><span class="line"><span class="keyword">const</span> values = <span class="built_in">Object</span>.values(cars);</span><br><span class="line"><span class="built_in">console</span>.log(values); <span class="comment">// [3, 2, 1]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Object-entries"><a href="#Object-entries" class="headerlink" title="Object.entries()"></a>Object.entries()</h2><p><code>Object.entries()</code> 与 <code>Object.keys</code> 相关，但不只是返回key，而是以数组的方式返回key和value，如此，将以简单的方式实现在loop中使用对象或将对象转换为Map。</p>
+<blockquote>
+<p>Example 1</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> cars = &#123; <span class="attr">BMW</span>: <span class="number">3</span>, <span class="attr">Tesla</span>: <span class="number">2</span>, <span class="attr">Toyota</span>: <span class="number">1</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES 5.1</span></span><br><span class="line"><span class="comment">// Instead of extracting keys and then again looping</span></span><br><span class="line"><span class="built_in">Object</span>.keys(cars).forEach(<span class="function"><span class="keyword">function</span>(<span class="params">key</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'key'</span> + key + <span class="string">' value'</span> + cars[key]);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES 8</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> [key, value] <span class="keyword">of</span> <span class="built_in">Object</span>.entries(cars)) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`key: <span class="subst">$&#123;key&#125;</span> value <span class="subst">$&#123;value&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Example 2</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> cars = &#123; <span class="attr">BMW</span>: <span class="number">3</span>, <span class="attr">Tesla</span>: <span class="number">2</span>, <span class="attr">Toyota</span>: <span class="number">1</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES 6</span></span><br><span class="line"><span class="comment">// Get Object keys and then add each item to Map in a loop</span></span><br><span class="line"><span class="keyword">const</span> map1 = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line"><span class="built_in">Object</span>.keys(cars).forEach(<span class="function"><span class="keyword">function</span>(<span class="params">key</span>) </span>&#123;</span><br><span class="line">    map1.set(key, cars[key]);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(map1); <span class="comment">// Map &#123; 'BMW' =&gt; 3, 'Tesla' =&gt; 2, 'Toyota' =&gt; 1 &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ES 8</span></span><br><span class="line"><span class="keyword">const</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>(Objects.entries(cars));</span><br><span class="line"><span class="built_in">console</span>.log(map); <span class="comment">// Map &#123; 'BMW' =&gt; 3, 'Tesla' =&gt; 2, 'Toyota' =&gt; 1 &#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="String-padding"><a href="#String-padding" class="headerlink" title="String padding"></a>String padding</h2><p>String对象增加了两个实例方法，<code>String.prototype.padStart</code> 和 <code>String.prototype.padEnd</code>，目的在于在原始字符串的开始或结尾预先添加或附加空字符串或者其他字符串。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'someString'</span>.padStart(numberOfCharcters [,stringForPadding]); </span><br><span class="line"></span><br><span class="line"><span class="string">'5'</span>.padStart(<span class="number">10</span>) <span class="comment">// '          5'</span></span><br><span class="line"><span class="string">'5'</span>.padStart(<span class="number">10</span>, <span class="string">'=*'</span>) <span class="comment">//'=*=*=*=*=5'</span></span><br><span class="line"></span><br><span class="line"><span class="string">'5'</span>.padEnd(<span class="number">10</span>) <span class="comment">// '5         '</span></span><br><span class="line"><span class="string">'5'</span>.padEnd(<span class="number">10</span>, <span class="string">'=*'</span>) <span class="comment">//'5=*=*=*=*='</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>一个可用场景就是在打印或者终端显示内容时，对齐内容</p>
+</blockquote>
+<h2 id="Object-getOwnPropertyDescriptors"><a href="#Object-getOwnPropertyDescriptors" class="headerlink" title="Object.getOwnPropertyDescriptors"></a>Object.getOwnPropertyDescriptors</h2><p>该方法返回给定对象的所有属性的详情，包括 getter <code>get</code> 和 setter <code>set</code> 方法。起主要的目的是允许将一个对象浅拷贝/克隆到另一个对象中，同时会复制getter和setter方法。</p>
+<blockquote>
+<p><code>Object.assign</code> 会浅复制原始对象除getter和setter方法的所有信息。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// BEFORE</span></span><br><span class="line"><span class="keyword">var</span> Car = &#123;</span><br><span class="line">    name: <span class="string">'BMW'</span>,</span><br><span class="line">    price: <span class="number">1000000</span>,</span><br><span class="line">    <span class="keyword">set</span> discount(x) &#123;</span><br><span class="line">        <span class="keyword">this</span>.d = x;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">get</span> discount() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.d</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Print details of Car object's 'discount' property</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getOwnPropertyDescriptor(car, <span class="string">'discount'</span>));</span><br><span class="line"><span class="comment">// print..</span></span><br><span class="line"><span class="comment">// &#123;</span></span><br><span class="line"><span class="comment">//         get: [Function: get],</span></span><br><span class="line"><span class="comment">//        set: [Function: set],</span></span><br><span class="line"><span class="comment">//         enumerable: true,</span></span><br><span class="line"><span class="comment">//         configurable: true</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// copy Car's properties to ElectricCar using Object.assign</span></span><br><span class="line"><span class="keyword">const</span> ElectricCar = <span class="built_in">Object</span>.assign(&#123;&#125;, Car);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Print details of ElectricCar object's 'discount' property</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getOwnPropertyDescriptor(ElectricCar, <span class="string">'discount'</span>));</span><br><span class="line"><span class="comment">// print..</span></span><br><span class="line"><span class="comment">// &#123;</span></span><br><span class="line"><span class="comment">//         value: undefined,</span></span><br><span class="line"><span class="comment">//        writable: true,</span></span><br><span class="line"><span class="comment">//         enumerable: true,</span></span><br><span class="line"><span class="comment">//         configurable: true</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="comment">// ⚠️Notice that getters and stters are missing in ElectricCar object for 'discount' property !👎🏽👎🏽</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// AFTER</span></span><br><span class="line"><span class="keyword">var</span> Car = &#123;</span><br><span class="line">    name: <span class="string">'BMW'</span>,</span><br><span class="line">    price: <span class="number">1000000</span>,</span><br><span class="line">    <span class="keyword">set</span> discount(x) &#123;</span><br><span class="line">        <span class="keyword">this</span>.d = x;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">get</span> discount() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.d</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 Object.defineProperties 复制 Car 到ElectricCar2</span></span><br><span class="line"><span class="comment">// 并使用 Object.getOwnPropertyDescriptor 提取 Car 的属性</span></span><br><span class="line"><span class="keyword">const</span> ElectricCar2 = <span class="built_in">Object</span>.defineProperties(&#123;&#125;, <span class="built_in">Object</span>.getOwnPropertyDescriptors(Car));</span><br><span class="line"></span><br><span class="line"><span class="comment">//Print details of ElectricCar2 object's 'discount' property</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getOwnPropertyDescriptor(ElectricCar2, <span class="string">'discount'</span>));</span><br><span class="line"><span class="comment">//prints..</span></span><br><span class="line"><span class="comment">// &#123; get: [Function: get],  👈🏼👈🏼👈🏼</span></span><br><span class="line"><span class="comment">//   set: [Function: set],  👈🏼👈🏼👈🏼</span></span><br><span class="line"><span class="comment">//   enumerable: true,</span></span><br><span class="line"><span class="comment">//   configurable: true </span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="comment">// Notice that getters and setters are present in the ElectricCar2 object for 'discount' property!</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="函数参数允许使用-trailing-comma"><a href="#函数参数允许使用-trailing-comma" class="headerlink" title="函数参数允许使用 trailing comma"></a>函数参数允许使用 trailing comma</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">    name,</span></span></span><br><span class="line"><span class="function"><span class="params">    age, <span class="regexp">//</span> 👈🏼👈🏼👈🏼</span></span></span><br><span class="line"><span class="function"><span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同样，在调用函数的时候，也允许使用 trailing comma</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.jjuina.com/uncategorized/ecmascript-2016-and-2017-e4-b8-80-e4-ba-9b-e6-96-b0-e7-9a-84-e6-96-b9-e6-b3-95-ef-bc-88-e7-89-b9-e6-80-a7-ef-bc-89" data-id="ck92t2u8q00164dur24gg1s47" class="article-share-link">Share</a>
+      
+      
+        <a href="http://www.jjuina.com/uncategorized/ecmascript-2016-and-2017-e4-b8-80-e4-ba-9b-e6-96-b0-e7-9a-84-e6-96-b9-e6-b3-95-ef-bc-88-e7-89-b9-e6-80-a7-ef-bc-89#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+ 
+<script src="/jquery/jquery.min.js"></script>
+
+  <div id="random_posts">
+    <h2>Recommended Posts</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =4
+          var site = {BASE_URI:'/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+    <a href="/uncategorized/Thought-of-Discrimination" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Thought of Discrimination
+        
+      </div>
+    </a>
+  
+  
+    <a href="/uncategorized/hiding-elements-with-css" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hiding Elements With CSS</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+      </section>
+      
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">Content</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Array-prototype-includes"><span class="toc-number">1.</span> <span class="toc-text">Array.prototype.includes()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Exponentiation-infix-operator-指数运算符"><span class="toc-number">2.</span> <span class="toc-text">Exponentiation infix operator - 指数运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Object-values"><span class="toc-number">3.</span> <span class="toc-text">Object.values()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Object-entries"><span class="toc-number">4.</span> <span class="toc-text">Object.entries()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String-padding"><span class="toc-number">5.</span> <span class="toc-text">String padding</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Object-getOwnPropertyDescriptors"><span class="toc-number">6.</span> <span class="toc-text">Object.getOwnPropertyDescriptors</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数参数允许使用-trailing-comma"><span class="toc-number">7.</span> <span class="toc-text">函数参数允许使用 trailing comma</span></a></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2020 Roy Jia&nbsp;|&nbsp;
+      Theme by <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      Contact&nbsp;|&nbsp;roy.jia@outlook.com
+    </div>
+  </div>
+</footer>
+ 
+<script src="/jquery/jquery.min.js"></script>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">HomePage</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+<script>
+  var disqus_shortname = 'jjuina';
+  
+  var disqus_url = 'http://www.jjuina.com/uncategorized/ecmascript-2016-and-2017-e4-b8-80-e4-ba-9b-e6-96-b0-e7-9a-84-e6-96-b9-e6-b3-95-ef-bc-88-e7-89-b9-e6-80-a7-ef-bc-89';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ 
+<script src="/js/is.js"></script>
+
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/elevator.js"></script>
+
+  </div>
+</body>
+</html>

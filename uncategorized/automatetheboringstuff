@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>What I get from automatetheboringstuff | Roy Jia&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Don’t Debug with print()  Log messages are intended for the programmer, not the user. The user won’t care about the contents of some dictionary value you need to see to help with debugging; use a log">
+<meta property="og:type" content="article">
+<meta property="og:title" content="What I get from automatetheboringstuff">
+<meta property="og:url" content="http://www.jjuina.com/uncategorized/automatetheboringstuff">
+<meta property="og:site_name" content="Roy Jia&#39;s Blog">
+<meta property="og:description" content="Don’t Debug with print()  Log messages are intended for the programmer, not the user. The user won’t care about the contents of some dictionary value you need to see to help with debugging; use a log">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-09-03T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-04-16T13:27:21.703Z">
+<meta property="article:author" content="Roy Jia">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Roy Jia&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.jjuina.com"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">HomePage</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Roy Jia&#39;s Blog</a>
+      </h1>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-automatetheboringstuff" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/uncategorized/automatetheboringstuff" class="article-date">
+  <time datetime="2018-09-03T16:00:00.000Z" itemprop="datePublished">2018-09-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      What I get from automatetheboringstuff
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <blockquote>
+<p>Don’t Debug with <code>print()</code></p>
+</blockquote>
+<p><strong>Log messages are intended for the programmer, not the user.</strong> The user won’t care about the contents of some dictionary value you need to see to help with debugging; use a log message for something like that. For messages that the user will want to see, like File not found or Invalid input, please enter a number, you should use a print() call. You don’t want to deprive the user of useful information after you’ve disabled log messages.</p>
+<a id="more"></a>
+
+<blockquote>
+<p>traceback - if you dont want your program be crashed</p>
+</blockquote>
+<p>instead of crashing your program right when an exception occurs, you can write the traceback information to a log file and keep your program running. You can look at the log file later, when you’re ready to debug your program. Enter the following into the interactive shell:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> traceback</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">raise</span> Exception(<span class="string">'This is the error message.'</span>)</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    errorFile = open(<span class="string">'errorInfo.txt'</span>, <span class="string">'w'</span>)</span><br><span class="line">    errorFile.write(traceback.format_exc())</span><br><span class="line">    errorFile.close()</span><br><span class="line">    print(<span class="string">'The traceback info was written to errorInfo.txt.'</span>)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>urllib2</code> VS <code>requests</code></p>
+</blockquote>
+<ul>
+<li><code>urllib2</code> is python’s built-in lib, <code>requests</code> is third-party module</li>
+<li><code>urllib2</code> is too complicated to use</li>
+</ul>
+<blockquote>
+<p>check HTML source</p>
+</blockquote>
+<p>I will need to look at HTML source of the web pages that my programs will work with. To do this, <strong>right click</strong> or (<strong>ctrl-click</strong> on OS X) any web page in my web browser, and select View Source or View Page Source to see the HTML text of the page.</p>
+<p>Opening my browser’s develop tools - In OS X, pressing <strong>CMD-OPTION-I</strong> will open Chrome’s develop tool</p>
+<blockquote>
+<p>Locating a specific piece of HTML in a string with regular expressions.</p>
+</blockquote>
+<p>Locating a specific piece of HTML in a string seems like a perfect case for regular expressions. But it would not be recommanded, see <a href="https://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags/1732454#1732454" target="_blank" rel="noopener">here</a></p>
+<blockquote>
+<p>Keeping Time, Scheduling Tasks, and Launching Programs</p>
+</blockquote>
+<p>The Unix epoch (January 1, 1970, at midnight, UTC) is a standard reference time for many programming languages, including Python. While the time.time() function module returns an epoch timestamp (that is, a float value of the number of seconds since the Unix epoch), the datetime module is better for performing date arithmetic and formatting or parsing strings with date information.</p>
+<p>The threading module is used to create multiple threads, which is useful when you need to download multiple files or do other tasks simultaneously. But make sure the thread reads and writes only local variables, or you might run into concurrency issues.</p>
+<p>Python programs can launch other applications with the subprocess.Popen() function. Command line arguments can be passed to the Popen() call to open specific documents with the application.</p>
+<blockquote>
+<p>Shirt Color Trick</p>
+</blockquote>
+<p>Pick a color besides black, grey, or blue and find the closest person wearing a shirt of that color. Go up and talk to them, no matter who they are. So if you pick green, find the closest person in a green shirt. If there’s nobody wearing a green shirt, pick a new color. Picking an uncommon color limits your choice of people to talk to, which limits how much your bias can influence you.</p>
+<blockquote>
+<p>SMS server - <a href="https://www.twilio.com/" target="_blank" rel="noopener">https://www.twilio.com/</a></p>
+</blockquote>
+<blockquote>
+<p>Manipulating Images</p>
+</blockquote>
+<p>Enter Python. <strong>Pillow</strong> is a third-party Python module for interacting with image files. The module has several functions that make it easy to crop, resize, and edit the content of an image.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.jjuina.com/uncategorized/automatetheboringstuff" data-id="ck92t2u8o00104dur8mqh5rcu" class="article-share-link">Share</a>
+      
+      
+        <a href="http://www.jjuina.com/uncategorized/automatetheboringstuff#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+ 
+<script src="/jquery/jquery.min.js"></script>
+
+  <div id="random_posts">
+    <h2>Recommended Posts</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =4
+          var site = {BASE_URI:'/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+    <a href="/uncategorized/Dream-in-Dream" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          梦中梦
+        
+      </div>
+    </a>
+  
+  
+    <a href="/uncategorized/Web-Scraping-with-Python" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">What I get from Web Scraping with Python</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+      </section>
+      
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title recent-posts">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/uncategorized/useful-apps-on-windows">Useful app on windows</a>
+          </li>
+        
+          <li>
+            <a href="/uncategorized/Dream-in-Dream">梦中梦</a>
+          </li>
+        
+          <li>
+            <a href="/uncategorized/automatetheboringstuff">What I get from automatetheboringstuff</a>
+          </li>
+        
+          <li>
+            <a href="/uncategorized/Web-Scraping-with-Python">What I get from Web Scraping with Python</a>
+          </li>
+        
+          <li>
+            <a href="/uncategorized/Shit-Scala">Shit Scala</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2020 Roy Jia&nbsp;|&nbsp;
+      Theme by <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      Contact&nbsp;|&nbsp;roy.jia@outlook.com
+    </div>
+  </div>
+</footer>
+ 
+<script src="/jquery/jquery.min.js"></script>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">HomePage</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+<script>
+  var disqus_shortname = 'jjuina';
+  
+  var disqus_url = 'http://www.jjuina.com/uncategorized/automatetheboringstuff';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ 
+<script src="/js/is.js"></script>
+
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/elevator.js"></script>
+
+  </div>
+</body>
+</html>

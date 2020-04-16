@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>The Part of Web Server | Roy Jia&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Apache&#x2F;Nginx&#x2F;IIS —&gt; Jetty&#x2F;Tomcat&#x2F;GlassFish&#x2F;Weblogic&#x2F;JBoss&#x2F;WebSphere  HTTP Server HTTP Server(Apache&#x2F;Nginx)本质上也是一种应用程序，通常安装运行在服务器上。其作用是绑定服务器的IP，监听某个TCP端口来接受并处理HTTP请求。这就是客户端通过HTTP协议获取服务器上网页（HTML&#x2F;CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Part of Web Server">
+<meta property="og:url" content="http://www.jjuina.com/uncategorized/the-part-of-web-server">
+<meta property="og:site_name" content="Roy Jia&#39;s Blog">
+<meta property="og:description" content="Apache&#x2F;Nginx&#x2F;IIS —&gt; Jetty&#x2F;Tomcat&#x2F;GlassFish&#x2F;Weblogic&#x2F;JBoss&#x2F;WebSphere  HTTP Server HTTP Server(Apache&#x2F;Nginx)本质上也是一种应用程序，通常安装运行在服务器上。其作用是绑定服务器的IP，监听某个TCP端口来接受并处理HTTP请求。这就是客户端通过HTTP协议获取服务器上网页（HTML&#x2F;CSS">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/RoyJia/mdimgs/raw/master/res/HTTP-Request-Response.png">
+<meta property="og:image" content="https://github.com/RoyJia/mdimgs/raw/master/res/Tomcat-Request-Response.png">
+<meta property="article:published_time" content="2017-08-15T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-04-16T13:27:21.705Z">
+<meta property="article:author" content="Roy Jia">
+<meta property="article:tag" content="Web Server">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/RoyJia/mdimgs/raw/master/res/HTTP-Request-Response.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Roy Jia&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.jjuina.com"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">HomePage</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Roy Jia&#39;s Blog</a>
+      </h1>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-the-part-of-web-server" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/uncategorized/the-part-of-web-server" class="article-date">
+  <time datetime="2017-08-15T16:00:00.000Z" itemprop="datePublished">2017-08-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      The Part of Web Server
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <blockquote>
+<p><strong>Apache/Nginx/IIS —&gt; Jetty/Tomcat/GlassFish/Weblogic/JBoss/WebSphere</strong></p>
+</blockquote>
+<h3 id="HTTP-Server"><a href="#HTTP-Server" class="headerlink" title="HTTP Server"></a>HTTP Server</h3><p><img src="https://github.com/RoyJia/mdimgs/raw/master/res/HTTP-Request-Response.png" alt=""></p>
+<p><strong>HTTP Server</strong>(Apache/Nginx)本质上也是一种应用程序，通常安装运行在服务器上。其作用是绑定服务器的IP，监听某个TCP端口来接受并处理HTTP请求。这就是客户端通过HTTP协议获取服务器上网页（HTML/CSS/JS…）、文档（PDF/TXT…）、音频（MP3/MP4…）、视屏（MOV/RMVB/MKV/AVI…）等等资源的原理。<br>Apache HTTP Server和Nginx常用作静态内容服务和代理服务，本身不支持动态生成内容，擅长将静态资源直接传送到客户端。也就是说HTTP Server的Response部分是静态资源。但是都有插件支持动态编程语言处理。但是，Nginx的IO模型比Apache更适合跑代理，所以Nginx一般作为前端缓冲代理。</p>
+<a id="more"></a>
+
+<blockquote>
+<p>Question：那么Nginx的反向代理和负载均衡是什么鬼概念？</p>
+</blockquote>
+<ul>
+<li>反向代理 - <a href="https://my.oschina.net/yoyoko/blog/147414" target="_blank" rel="noopener">https://my.oschina.net/yoyoko/blog/147414</a></li>
+<li>负载均衡 - <a href="http://blog.csdn.net/u014686399/article/details/71156342" target="_blank" rel="noopener">http://blog.csdn.net/u014686399/article/details/71156342</a></li>
+</ul>
+<h3 id="Application-Server-Web-Container"><a href="#Application-Server-Web-Container" class="headerlink" title="Application Server - Web Container"></a>Application Server - Web Container</h3><p><img src="https://github.com/RoyJia/mdimgs/raw/master/res/Tomcat-Request-Response.png" alt=""></p>
+<p>Application Server(Tomcat/JBoss/Jetty) - Servlet/JSP应用的容器<br>Tomcat运行在JVM上，作用和HTTP Server一样，绑定IP并监听TCP端口，但同时还有额外的职责：</p>
+<ul>
+<li>管理Servlet程序的生命周期</li>
+<li>讲URL映射到指定的Servlet进行处理</li>
+<li>动态生成内容，响应客户端（Servelt动态生成静态内容，并传送至客户端）</li>
+</ul>
+<blockquote>
+<p>Question：通常听到说Tomcat配合Nginx一起使用，他们用在一起做什么了？</p>
+</blockquote>
+<ul>
+<li>动静态资源分离 - 运用Nginx反向代理功能分发请求：讲动态资源的请求交给Tomcat，静态资源请求交由Nginx处理。降低Tomcat处理动态内容的压力</li>
+<li>负载均衡 - 当业务压力增大到一个Tomcat实力不足以处理时，可以启动多个Tomcat进行水平扩展。Nginx的负载均衡功能可以把请求通过算法分发到各个不同的实例进行处理</li>
+</ul>
+<h2 id="Reference-Link"><a href="#Reference-Link" class="headerlink" title="Reference Link"></a>Reference Link</h2><ul>
+<li>Nginx配置实例 - <a href="http://blog.csdn.net/hiyun9/article/details/51602428" target="_blank" rel="noopener">http://blog.csdn.net/hiyun9/article/details/51602428</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.jjuina.com/uncategorized/the-part-of-web-server" data-id="ck92t2u8v001n4durdcy9dc72" class="article-share-link">Share</a>
+      
+      
+        <a href="http://www.jjuina.com/uncategorized/the-part-of-web-server#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web-Server/" rel="tag">Web Server</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+ 
+<script src="/jquery/jquery.min.js"></script>
+
+  <div id="random_posts">
+    <h2>Recommended Posts</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =4
+          var site = {BASE_URI:'/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+    <a href="/uncategorized/gulp" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          gulp
+        
+      </div>
+    </a>
+  
+  
+    <a href="/uncategorized/front-end-developer" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Front-End Developer</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+      </section>
+      
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">Content</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP-Server"><span class="toc-number">1.</span> <span class="toc-text">HTTP Server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Application-Server-Web-Container"><span class="toc-number">2.</span> <span class="toc-text">Application Server - Web Container</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference-Link"><span class="toc-number"></span> <span class="toc-text">Reference Link</span></a>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2020 Roy Jia&nbsp;|&nbsp;
+      Theme by <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      Contact&nbsp;|&nbsp;roy.jia@outlook.com
+    </div>
+  </div>
+</footer>
+ 
+<script src="/jquery/jquery.min.js"></script>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">HomePage</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+<script>
+  var disqus_shortname = 'jjuina';
+  
+  var disqus_url = 'http://www.jjuina.com/uncategorized/the-part-of-web-server';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ 
+<script src="/js/is.js"></script>
+
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/elevator.js"></script>
+
+  </div>
+</body>
+</html>

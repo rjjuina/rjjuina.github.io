@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Front-End Developer | Roy Jia&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前端开发 - Front-end web development&#x2F;client-side developmentWeb dev主要玩三种东西：JavaScript&#x2F;Html&#x2F;CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Front-End Developer">
+<meta property="og:url" content="http://www.jjuina.com/uncategorized/front-end-developer">
+<meta property="og:site_name" content="Roy Jia&#39;s Blog">
+<meta property="og:description" content="前端开发 - Front-end web development&#x2F;client-side developmentWeb dev主要玩三种东西：JavaScript&#x2F;Html&#x2F;CSS">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/RoyJia/mdimgs/raw/master/res/web-tech-employed.jpg">
+<meta property="og:image" content="https://github.com/RoyJia/mdimgs/raw/master/res/what-is-front-end-dev.png">
+<meta property="og:image" content="https://github.com/RoyJia/mdimgs/raw/master/res/front-end-spectrum.png">
+<meta property="article:published_time" content="2017-08-13T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-04-16T13:27:21.704Z">
+<meta property="article:author" content="Roy Jia">
+<meta property="article:tag" content="Front-End">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/RoyJia/mdimgs/raw/master/res/web-tech-employed.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Roy Jia&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.jjuina.com"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">HomePage</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Roy Jia&#39;s Blog</a>
+      </h1>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-front-end-developer" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/uncategorized/front-end-developer" class="article-date">
+  <time datetime="2017-08-13T16:00:00.000Z" itemprop="datePublished">2017-08-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Front-End Developer
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h3 id="前端开发-Front-end-web-development-client-side-development"><a href="#前端开发-Front-end-web-development-client-side-development" class="headerlink" title="前端开发 - Front-end web development/client-side development"></a>前端开发 - Front-end web development/client-side development</h3><p>Web dev主要玩三种东西：JavaScript/Html/CSS</p>
+<p><img src="https://github.com/RoyJia/mdimgs/raw/master/res/web-tech-employed.jpg" alt=""></p>
+<a id="more"></a>
+
+<blockquote>
+<p>一个合格的web产品必须满足以下三个条件：</p>
+</blockquote>
+<ul>
+<li>We have to ensure our web app comes up correctly in different browsers (cross-browser),</li>
+<li>different operation systems (cross-platform),</li>
+<li>different devices (cross-device).</li>
+</ul>
+<p><img src="https://github.com/RoyJia/mdimgs/raw/master/res/what-is-front-end-dev.png" alt=""></p>
+<h3 id="Core-web-technologies"><a href="#Core-web-technologies" class="headerlink" title="Core web technologies"></a>Core web technologies</h3><ol>
+<li>Uniform Resource Locators (aka URLs)</li>
+<li>Hypertext Transfer Protocol (aka HTTP)</li>
+<li>Hyper Text Markup Language (aka HTML)</li>
+<li>Cascading Style Sheets (aka CSS)</li>
+<li>JavaScript Programming Language (aka ECMAScript 262)</li>
+<li>JavaScript Object Notation (aka JSON)</li>
+<li>Document Object Model (aka DOM)</li>
+<li>Web APIs (aka HTML5 and friends or Browser APIs)</li>
+<li>Web Content Accessibility Guidelines (aka WCAG) &amp; Accessible Rich Internet Applications (aka ARIA)</li>
+</ol>
+<p>Don’t learn jQuery, learn the DOM. Don’t learn SASS, learn CSS. Don’t learn HAML, learn HTML. Don’t learn CoffeeScript, learn JavaScript. Don’t learn Handlebars, learn JavaScript ES6 templates. Don’t just use Bootstrap, learn UI patterns.</p>
+<p><img src="https://github.com/RoyJia/mdimgs/raw/master/res/front-end-spectrum.png" alt=""></p>
+<ol>
+<li><p>Text editor - 选择编辑器<br>光谱图中列出了Atom、sublime、WebStorm。其实还有很多，例如Brackets、Visual Studio、Intellj …</p>
+</li>
+<li><p>Tools - Version Control/Back-End - 安装工具</p>
+<ul>
+<li>git - 版本控制工具，Expedia AWS的项目都托管于github</li>
+<li>nodejs - 为项目提供JavaScript运行环境 <strong>*</strong></li>
+<li>npm - 是nodejs的包管理器，大家都熟悉的npm install xxx，管理项目中一些公共的JavaScript包 <strong>*</strong></li>
+<li>rails - 基于MVC的web开发框架 ***</li>
+</ul>
+</li>
+<li><p>Core - HTML/JavaScript/Css<br>从最开始的页面设计说起，首先需要使用HTML和CSS设计静态页面，也就是UI设计，直接呈现给user。接下来需要做一些动态的交互，那么就需要用到JavaScript，JavaScript的生态系统已经相当复杂，同时JavaScript是web开发中占比最大的一部分。（乱入 - web component，web component是一些现有的，标准的具有高复用性的组件，每一个web component自有html、js、css）</p>
+</li>
+</ol>
+<p><strong>CSS叫做层叠样式表</strong>（Cascading Style Sheets），用作开发网页样式，但它并不是一种变成语言，它没有变量，也没有条件语句。所以有人为CSS加入了变成元素，叫做“CSS预处理器”，Less和Sass就是CSS的预处理器，以编程的方式进行网页设计，然后再编译成正常的CSS。</p>
+<ul>
+<li>UI Frameworks - Bootstrap/Ionic/Foundation - Expedia使用自己的UI库UIToolkit - <a href="http://uitoolkit.sb.karmalab.net/uitoolkit-current/docs/index" target="_blank" rel="noopener">http://uitoolkit.sb.karmalab.net/uitoolkit-current/docs/index</a></li>
+<li>JS Frameworks - Jquery/Backbone/Ember/React(Flux/Redux)/AngularJS/Polymer/D3</li>
+<li>Backbone - web前端MVC模式的js框架</li>
+<li>Templating - Handlebars/Haml/Jade</li>
+<li>Handlebars - 是js的一个语义模板库，讲view和data分离，主思路为“Logic-less template”</li>
+<li>JS Preprocessors - Babel/TypeScript/CoffeeScript</li>
+<li>Babel是js的语法编译器，例如将ES6的js编译为旧版本的js以支持旧版本的浏览器、编译React的JSX语法糖。</li>
+<li>Building Tools - RequireJS/Browserify/Webpack</li>
+<li>RequireJS - 是一个JS模块加载器</li>
+<li>Code Quality - ESLint/JSCS</li>
+<li>ESLint - 是一个QA工具，用来避免低级错误和统一代码风格，可以自己指定Rules。以前多用JSHint，逐渐被ESLint取代。</li>
+<li>Process Automation - Gulp/Grunt/Broccoli</li>
+<li>Front-End Performance - Webpagetest/mod_pagespeed/PreBudget/CriticalCSS/Picturefill</li>
+<li>OOCSS &amp; Style Guides - MVCSS/SMACSS/BEM/Inuitcss/KSS/Pattern Lab<br>Browser Refreshing - LiveReload/Guard</li>
+</ul>
+<p>Thinking of a whole web app. It contains Front-End and Back-End, we can keep them together or split them into two separated codebases.<br>We can use Webpack to wrap all resources like <code>*.js</code>/<code>*.css</code>/<code>*.png</code>/<code>*.jpg</code>/<code>*.hbs</code>/<code>*.sass</code>/<code>*.less</code> to a package<br>Webpack is a module bundler, this means webpack takes modules with dependencies and emits static assets representing those modules.<br>We have to make data interaction with restful interface.<br>Split Front-End and Back-End, split into two separated codebases</p>
+<h3 id="ES6-—-NODEJS-—-REACT-—-ANGULARJS-—-RESPONSIVE-WEB-DESIGN"><a href="#ES6-—-NODEJS-—-REACT-—-ANGULARJS-—-RESPONSIVE-WEB-DESIGN" class="headerlink" title="ES6 — NODEJS — REACT — ANGULARJS — RESPONSIVE WEB DESIGN"></a>ES6 — NODEJS — REACT — ANGULARJS — RESPONSIVE WEB DESIGN</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Service(Back-End) —&gt;;</span><br><span class="line">RESTful Interface(Data Interaction) —&gt;;</span><br><span class="line">Component Concept</span><br><span class="line">React/Backbone/Ember(JS Framework - MVC/FLUX/REDUX) —&gt;;</span><br><span class="line">JQuery UI/Bootstrap(UI) —&gt;;</span><br><span class="line">Webpack(Module Bundler) —&gt;;</span><br><span class="line">RequireJS(Module Loader) —&gt;;</span><br><span class="line">Handlebars(Template) —&gt;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Reference-Link"><a href="#Reference-Link" class="headerlink" title="Reference Link"></a>Reference Link</h2><ul>
+<li><a href="https://medium.com/@withinsight1/the-front-end-spectrum-c0f30998c9f0" target="_blank" rel="noopener">https://medium.com/@withinsight1/the-front-end-spectrum-c0f30998c9f0</a></li>
+<li><a href="https://frontendmasters.com/books/front-end-handbook/2017/" target="_blank" rel="noopener">https://frontendmasters.com/books/front-end-handbook/2017/</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.jjuina.com/uncategorized/front-end-developer" data-id="ck92t2u8r00184durgiau2i3l" class="article-share-link">Share</a>
+      
+      
+        <a href="http://www.jjuina.com/uncategorized/front-end-developer#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Front-End/" rel="tag">Front-End</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+ 
+<script src="/jquery/jquery.min.js"></script>
+
+  <div id="random_posts">
+    <h2>Recommended Posts</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =4
+          var site = {BASE_URI:'/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+    <a href="/uncategorized/the-part-of-web-server" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          The Part of Web Server
+        
+      </div>
+    </a>
+  
+  
+    <a href="/uncategorized/flux" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Flux</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+      </section>
+      
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">Content</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前端开发-Front-end-web-development-client-side-development"><span class="toc-number">1.</span> <span class="toc-text">前端开发 - Front-end web development&#x2F;client-side development</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Core-web-technologies"><span class="toc-number">2.</span> <span class="toc-text">Core web technologies</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ES6-—-NODEJS-—-REACT-—-ANGULARJS-—-RESPONSIVE-WEB-DESIGN"><span class="toc-number">3.</span> <span class="toc-text">ES6 — NODEJS — REACT — ANGULARJS — RESPONSIVE WEB DESIGN</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference-Link"><span class="toc-number"></span> <span class="toc-text">Reference Link</span></a>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2020 Roy Jia&nbsp;|&nbsp;
+      Theme by <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      Contact&nbsp;|&nbsp;roy.jia@outlook.com
+    </div>
+  </div>
+</footer>
+ 
+<script src="/jquery/jquery.min.js"></script>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">HomePage</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+<script>
+  var disqus_shortname = 'jjuina';
+  
+  var disqus_url = 'http://www.jjuina.com/uncategorized/front-end-developer';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ 
+<script src="/js/is.js"></script>
+
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/elevator.js"></script>
+
+  </div>
+</body>
+</html>
