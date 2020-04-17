@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>What I get from automatetheboringstuff | 务虚之城</title>
+  <title>set_session cannot be used inside a transaction | 务虚之城</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Don’t Debug with print()  Log messages are intended for the programmer, not the user. The user won’t care about the contents of some dictionary value you need to see to help with debugging; use a log">
+  <meta name="description" content="I saved some constant values into a table content_configuration, in a Python method, I did some steps in sequence like below  Create and save a parent table app_release record, to use app_release reco">
 <meta property="og:type" content="article">
-<meta property="og:title" content="What I get from automatetheboringstuff">
-<meta property="og:url" content="http://www.jjuina.com/2018/09/04/automatetheboringstuff/index.html">
+<meta property="og:title" content="set_session cannot be used inside a transaction">
+<meta property="og:url" content="http://www.jjuina.com/2020/03/06/set_session-cannot-be-used/index.html">
 <meta property="og:site_name" content="务虚之城">
-<meta property="og:description" content="Don’t Debug with print()  Log messages are intended for the programmer, not the user. The user won’t care about the contents of some dictionary value you need to see to help with debugging; use a log">
+<meta property="og:description" content="I saved some constant values into a table content_configuration, in a Python method, I did some steps in sequence like below  Create and save a parent table app_release record, to use app_release reco">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2018-09-03T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-04-16T13:27:21.703Z">
+<meta property="article:published_time" content="2020-03-05T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-04-17T11:06:26.696Z">
 <meta property="article:author" content="Roy Jia">
 <meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary">
@@ -71,10 +71,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-automatetheboringstuff" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-set_session-cannot-be-used" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/09/04/automatetheboringstuff/" class="article-date">
-  <time datetime="2018-09-03T16:00:00.000Z" itemprop="datePublished">2018-09-04</time>
+    <a href="/2020/03/06/set_session-cannot-be-used/" class="article-date">
+  <time datetime="2020-03-05T16:00:00.000Z" itemprop="datePublished">2020-03-06</time>
 </a>
     
   </div>
@@ -85,7 +85,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      What I get from automatetheboringstuff
+      set_session cannot be used inside a transaction
     </h1>
   
 
@@ -95,59 +95,23 @@
       
         <!-- Table of Contents -->
         
-        <blockquote>
-<p>Don’t Debug with <code>print()</code></p>
-</blockquote>
-<p><strong>Log messages are intended for the programmer, not the user.</strong> The user won’t care about the contents of some dictionary value you need to see to help with debugging; use a log message for something like that. For messages that the user will want to see, like File not found or Invalid input, please enter a number, you should use a print() call. You don’t want to deprive the user of useful information after you’ve disabled log messages.</p>
-<a id="more"></a>
-
-<blockquote>
-<p>traceback - if you dont want your program be crashed</p>
-</blockquote>
-<p>instead of crashing your program right when an exception occurs, you can write the traceback information to a log file and keep your program running. You can look at the log file later, when you’re ready to debug your program. Enter the following into the interactive shell:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> traceback</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">raise</span> Exception(<span class="string">'This is the error message.'</span>)</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    errorFile = open(<span class="string">'errorInfo.txt'</span>, <span class="string">'w'</span>)</span><br><span class="line">    errorFile.write(traceback.format_exc())</span><br><span class="line">    errorFile.close()</span><br><span class="line">    print(<span class="string">'The traceback info was written to errorInfo.txt.'</span>)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>urllib2</code> VS <code>requests</code></p>
-</blockquote>
-<ul>
-<li><code>urllib2</code> is python’s built-in lib, <code>requests</code> is third-party module</li>
-<li><code>urllib2</code> is too complicated to use</li>
-</ul>
-<blockquote>
-<p>check HTML source</p>
-</blockquote>
-<p>I will need to look at HTML source of the web pages that my programs will work with. To do this, <strong>right click</strong> or (<strong>ctrl-click</strong> on OS X) any web page in my web browser, and select View Source or View Page Source to see the HTML text of the page.</p>
-<p>Opening my browser’s develop tools - In OS X, pressing <strong>CMD-OPTION-I</strong> will open Chrome’s develop tool</p>
-<blockquote>
-<p>Locating a specific piece of HTML in a string with regular expressions.</p>
-</blockquote>
-<p>Locating a specific piece of HTML in a string seems like a perfect case for regular expressions. But it would not be recommanded, see <a href="https://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags/1732454#1732454" target="_blank" rel="noopener">here</a></p>
-<blockquote>
-<p>Keeping Time, Scheduling Tasks, and Launching Programs</p>
-</blockquote>
-<p>The Unix epoch (January 1, 1970, at midnight, UTC) is a standard reference time for many programming languages, including Python. While the time.time() function module returns an epoch timestamp (that is, a float value of the number of seconds since the Unix epoch), the datetime module is better for performing date arithmetic and formatting or parsing strings with date information.</p>
-<p>The threading module is used to create multiple threads, which is useful when you need to download multiple files or do other tasks simultaneously. But make sure the thread reads and writes only local variables, or you might run into concurrency issues.</p>
-<p>Python programs can launch other applications with the subprocess.Popen() function. Command line arguments can be passed to the Popen() call to open specific documents with the application.</p>
-<blockquote>
-<p>Shirt Color Trick</p>
-</blockquote>
-<p>Pick a color besides black, grey, or blue and find the closest person wearing a shirt of that color. Go up and talk to them, no matter who they are. So if you pick green, find the closest person in a green shirt. If there’s nobody wearing a green shirt, pick a new color. Picking an uncommon color limits your choice of people to talk to, which limits how much your bias can influence you.</p>
-<blockquote>
-<p>SMS server - <a href="https://www.twilio.com/" target="_blank" rel="noopener">https://www.twilio.com/</a></p>
-</blockquote>
-<blockquote>
-<p>Manipulating Images</p>
-</blockquote>
-<p>Enter Python. <strong>Pillow</strong> is a third-party Python module for interacting with image files. The module has several functions that make it easy to crop, resize, and edit the content of an image.</p>
+        <p>I saved some constant values into a table content_configuration, in a Python method, I did some steps in sequence like below</p>
+<ol>
+<li>Create and save a parent table app_release record, to use app_release record id later</li>
+<li>Query a constant value locales from content_configuration table, to use locales later</li>
+<li>Create and save sub table mobile_app_task record which it contains app_release_id and locales</li>
+</ol>
+<p>But when I run this method, I got <code>set_session cannot be used inside a transaction</code>, at the beginning, I thought that I should not do these steps(create and save record, query, create and save sub table recored again), it was acutally wrong thinking.</p>
+<p>Also, when I did research by google with key text <code>django set_session cannot be used inside a transaction</code>, something it was pointed to psycopg2, seems it’s true, psycopg2 has the same issue before, I wasted some time on that.</p>
+<p>As my design, for sub table mobile_app_task, there are not fields like created_at, updated_at, created_by, updated_by. but these 4 attributes has been designed in the Django BaseModel, then I understand that every model will inherit this BaseModel’s fields.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.jjuina.com/2018/09/04/automatetheboringstuff/" data-id="ck9439wd200160kur8k0q0l5h" class="article-share-link">Share</a>
+      <a data-url="http://www.jjuina.com/2020/03/06/set_session-cannot-be-used/" data-id="ck9439wdg001w0kurdq4jg6qz" class="article-share-link">Share</a>
       
       
-        <a href="http://www.jjuina.com/2018/09/04/automatetheboringstuff/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://www.jjuina.com/2020/03/06/set_session-cannot-be-used/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
@@ -202,19 +166,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/09/06/Dream-in-Dream/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          梦中梦
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/09/02/Web-Scraping-with-Python/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/09/08/useful-apps-on-windows/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">What I get from Web Scraping with Python</div>
+      <div class="article-nav-title">Useful app on windows</div>
     </a>
   
 </nav>
@@ -337,7 +292,7 @@ window.onload = function() {
 <script>
   var disqus_shortname = 'jjuina';
   
-  var disqus_url = 'http://www.jjuina.com/2018/09/04/automatetheboringstuff/';
+  var disqus_url = 'http://www.jjuina.com/2020/03/06/set_session-cannot-be-used/';
   
   (function(){
     var dsq = document.createElement('script');

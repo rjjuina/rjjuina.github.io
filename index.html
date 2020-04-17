@@ -71,6 +71,59 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-set_session-cannot-be-used" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/06/set_session-cannot-be-used/" class="article-date">
+  <time datetime="2020-03-05T16:00:00.000Z" itemprop="datePublished">2020-03-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/06/set_session-cannot-be-used/">set_session cannot be used inside a transaction</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>I saved some constant values into a table content_configuration, in a Python method, I did some steps in sequence like below</p>
+<ol>
+<li>Create and save a parent table app_release record, to use app_release record id later</li>
+<li>Query a constant value locales from content_configuration table, to use locales later</li>
+<li>Create and save sub table mobile_app_task record which it contains app_release_id and locales</li>
+</ol>
+<p>But when I run this method, I got <code>set_session cannot be used inside a transaction</code>, at the beginning, I thought that I should not do these steps(create and save record, query, create and save sub table recored again), it was acutally wrong thinking.</p>
+<p>Also, when I did research by google with key text <code>django set_session cannot be used inside a transaction</code>, something it was pointed to psycopg2, seems it’s true, psycopg2 has the same issue before, I wasted some time on that.</p>
+<p>As my design, for sub table mobile_app_task, there are not fields like created_at, updated_at, created_by, updated_by. but these 4 attributes has been designed in the Django BaseModel, then I understand that every model will inherit this BaseModel’s fields.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.jjuina.com/2020/03/06/set_session-cannot-be-used/" data-id="ck9439wdg001w0kurdq4jg6qz" class="article-share-link">Share</a>
+      
+      
+        <a href="http://www.jjuina.com/2020/03/06/set_session-cannot-be-used/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-useful-apps-on-windows" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/09/08/useful-apps-on-windows/" class="article-date">
@@ -114,7 +167,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.jjuina.com/2018/09/08/useful-apps-on-windows/" data-id="ck92vbcm00029fzur1l02a6g7" class="article-share-link">Share</a>
+      <a data-url="http://www.jjuina.com/2018/09/08/useful-apps-on-windows/" data-id="ck9439wdk00260kur0p1486i5" class="article-share-link">Share</a>
       
       
         <a href="http://www.jjuina.com/2018/09/08/useful-apps-on-windows/#disqus_thread" class="article-comment-link">Comments</a>
@@ -162,7 +215,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.jjuina.com/2018/09/06/Dream-in-Dream/" data-id="ck92vbckt0001fzur9zqaats7" class="article-share-link">Share</a>
+      <a data-url="http://www.jjuina.com/2018/09/06/Dream-in-Dream/" data-id="ck9439wbp00000kurbqjf2bbh" class="article-share-link">Share</a>
       
       
         <a href="http://www.jjuina.com/2018/09/06/Dream-in-Dream/#disqus_thread" class="article-comment-link">Comments</a>
@@ -212,7 +265,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.jjuina.com/2018/09/04/automatetheboringstuff/" data-id="ck92vbcle000zfzur2y3saqa8" class="article-share-link">Share</a>
+      <a data-url="http://www.jjuina.com/2018/09/04/automatetheboringstuff/" data-id="ck9439wd200160kur8k0q0l5h" class="article-share-link">Share</a>
       
       
         <a href="http://www.jjuina.com/2018/09/04/automatetheboringstuff/#disqus_thread" class="article-comment-link">Comments</a>
@@ -334,7 +387,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.jjuina.com/2018/09/02/Web-Scraping-with-Python/" data-id="ck92vbclc000vfzurdkab8m1g" class="article-share-link">Share</a>
+      <a data-url="http://www.jjuina.com/2018/09/02/Web-Scraping-with-Python/" data-id="ck9439wd000110kurh8g39mfp" class="article-share-link">Share</a>
       
       
         <a href="http://www.jjuina.com/2018/09/02/Web-Scraping-with-Python/#disqus_thread" class="article-comment-link">Comments</a>
@@ -382,7 +435,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.jjuina.com/2018/08/11/Shit-Scala/" data-id="ck92vbcl3000efzur8egubzug" class="article-share-link">Share</a>
+      <a data-url="http://www.jjuina.com/2018/08/11/Shit-Scala/" data-id="ck9439wcs000o0kur2k6s77we" class="article-share-link">Share</a>
       
       
         <a href="http://www.jjuina.com/2018/08/11/Shit-Scala/#disqus_thread" class="article-comment-link">Comments</a>
@@ -432,7 +485,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.jjuina.com/2018/07/31/python-wrapper/" data-id="ck92vbcly0023fzur5sll5vl7" class="article-share-link">Share</a>
+      <a data-url="http://www.jjuina.com/2018/07/31/python-wrapper/" data-id="ck9439wdh001z0kur87x0bjrq" class="article-share-link">Share</a>
       
       
         <a href="http://www.jjuina.com/2018/07/31/python-wrapper/#disqus_thread" class="article-comment-link">Comments</a>
@@ -482,7 +535,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.jjuina.com/2018/06/19/SVG-text-position/" data-id="ck92vbcl2000cfzur8n0s3nrk" class="article-share-link">Share</a>
+      <a data-url="http://www.jjuina.com/2018/06/19/SVG-text-position/" data-id="ck9439wcr000k0kur2t393k56" class="article-share-link">Share</a>
       
       
         <a href="http://www.jjuina.com/2018/06/19/SVG-text-position/#disqus_thread" class="article-comment-link">Comments</a>
@@ -536,7 +589,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.jjuina.com/2018/06/18/Getting-the-pixel-width-height-of-text/" data-id="ck92vbcky0005fzur177pcmjj" class="article-share-link">Share</a>
+      <a data-url="http://www.jjuina.com/2018/06/18/Getting-the-pixel-width-height-of-text/" data-id="ck9439wcd00070kurcwoidczh" class="article-share-link">Share</a>
       
       
         <a href="http://www.jjuina.com/2018/06/18/Getting-the-pixel-width-height-of-text/#disqus_thread" class="article-comment-link">Comments</a>
@@ -589,62 +642,13 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.jjuina.com/2018/06/11/Init-attributes-by-Autowired-and-Constructor/" data-id="ck92vbcl00008fzur72wwbj6s" class="article-share-link">Share</a>
+      <a data-url="http://www.jjuina.com/2018/06/11/Init-attributes-by-Autowired-and-Constructor/" data-id="ck9439wco000f0kurccil4n3j" class="article-share-link">Share</a>
       
       
         <a href="http://www.jjuina.com/2018/06/11/Init-attributes-by-Autowired-and-Constructor/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-Canvas-plus-SVG" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/06/02/Canvas-plus-SVG/" class="article-date">
-  <time datetime="2018-06-01T16:00:00.000Z" itemprop="datePublished">2018-06-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/02/Canvas-plus-SVG/">Canvas plus SVG</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>目前正在开发一个应用，目的是要制作一个图形界面，在屏幕上显示整个办公区的工位图，并实现通过搜索定位员工、Team。</p>
-<p>起初一开始就打算使用SVG实现整个图形界面。同时也知道Canvas，以为这两个东西要结合起来才能实现一些动态的效果。</p>
-<p>但是等了解了SVG和Canvas的概念之后，再做一个对比，才发现并不需要Canvas。</p>
-        
-          <p class="article-more-link">
-            <a href="/2018/06/02/Canvas-plus-SVG/#more">Read More »</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.jjuina.com/2018/06/02/Canvas-plus-SVG/" data-id="ck92vbcl6000mfzur08e3h2pk" class="article-share-link">Share</a>
-      
-      
-        <a href="http://www.jjuina.com/2018/06/02/Canvas-plus-SVG/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Canvas-SVG/" rel="tag">Canvas, SVG</a></li></ul>
 
     </footer>
   </div>
@@ -707,6 +711,10 @@
       <ul>
         
           <li>
+            <a href="/2020/03/06/set_session-cannot-be-used/">set_session cannot be used inside a transaction</a>
+          </li>
+        
+          <li>
             <a href="/2018/09/08/useful-apps-on-windows/">Useful app on windows</a>
           </li>
         
@@ -722,10 +730,6 @@
             <a href="/2018/09/02/Web-Scraping-with-Python/">What I get from Web Scraping with Python</a>
           </li>
         
-          <li>
-            <a href="/2018/08/11/Shit-Scala/">Shit Scala</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -735,7 +739,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title archive">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
