@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://www.javacodegeeks.com/wp-content/uploads/2018/04/jvm_archi_clrda_guide_5.jpg">
 <meta property="og:image" content="https://java2blog.com/wp-content/uploads/2019/05/YoungOldGeneration-1024x733.png">
 <meta property="article:published_time" content="2020-04-19T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-04-20T08:15:36.701Z">
+<meta property="article:modified_time" content="2020-04-20T08:16:42.094Z">
 <meta property="article:author" content="Roy Jia">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
@@ -137,7 +137,7 @@
 </ul>
 <h3 id="Runtime-Data-Areas"><a href="#Runtime-Data-Areas" class="headerlink" title="Runtime Data Areas"></a>Runtime Data Areas</h3><p>Memory management system of JVM, it is used to store Class info, instance info, method info, constants or variables.</p>
 <p><img src="https://www.javacodegeeks.com/wp-content/uploads/2018/04/jvm_archi_clrda_guide_5.jpg" alt="JVM-runtime-data-areas"></p>
-<h4 id="Class-Method-Area"><a href="#Class-Method-Area" class="headerlink" title="Class(Method) Area"></a>Class(Method) Area</h4><p>ClassLoader loads the <code>.class</code> files and save bytecode in the Class(Method) area. This </p>
+<h4 id="Class-Method-Area"><a href="#Class-Method-Area" class="headerlink" title="Class(Method) Area"></a>Class(Method) Area</h4><p>ClassLoader loads the <code>.class</code> files and save bytecode in the Class(Method) area.</p>
 <h4 id="Heap"><a href="#Heap" class="headerlink" title="Heap"></a>Heap</h4><p>JVM heap is a part of JVM memory where all the objects and it’s corresponding instance variables and arrays are stored. There is only one heap area and is shared across multiple threads as the data stored here is not thread-safe.</p>
 <h4 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h4><p>JVM Stack is a part of JVM memory where all temporary variables are stored, this area has stack frames and allocates one frame for each thread, once the thread execution is completed, the frame also gets destroyed. This component is thread-safe.</p>
 <h4 id="PC-Program-Counter-Regiser"><a href="#PC-Program-Counter-Regiser" class="headerlink" title="PC(Program Counter) Regiser"></a>PC(Program Counter) Regiser</h4><p>This component holds the address of JVM instruction which is currently executing, each Java thread has its own PC register to hold the address of the current executing instruction. Which means this component is thread-safe.</p>
@@ -188,7 +188,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jjuina.com/2020/04/20/JVM/" data-id="ck987fte60008nmur51t04mfb" class="article-share-link">Share</a>
+      <a data-url="https://jjuina.com/2020/04/20/JVM/" data-id="ck987h7w90008qjurbwf40i29" class="article-share-link">Share</a>
       
       
         <a href="https://jjuina.com/2020/04/20/JVM/#disqus_thread" class="article-comment-link">Comments</a>
