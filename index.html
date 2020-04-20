@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="务虚之城">
-<meta property="og:url" content="http://www.jjuina.com/index.html">
+<meta property="og:url" content="https://jjuina.com/index.html">
 <meta property="og:site_name" content="务虚之城">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="Roy Jia">
@@ -46,7 +46,7 @@
         <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.jjuina.com"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://jjuina.com"></form>
       </div>
       <nav id="main-nav">
         <a id="main-nav-toggle" class="nav-icon"></a>
@@ -70,6 +70,133 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-JVM" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/20/JVM/" class="article-date">
+  <time datetime="2020-04-19T16:00:00.000Z" itemprop="datePublished">2020-04-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/20/JVM/">JVM</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>JVM is an abstract virtual machine(program) which is could be installed on any device or operating systems. One good explaination of <a href="https://www.youtube.com/watch?v=QHIWkwxs0AI" target="_blank" rel="noopener">JVM Architecture</a></p>
+<p><img src="https://images.idgesg.net/images/article/2019/03/javaworld_jvm_jdk_jre_explainer_java_virtual_machine_debug_and_optimize_3x2_overview_update-100790558-orig.jpg" alt="app-jvm-platforms"></p>
+<ul>
+<li>to provide runtime environment to execute other programs(Java application).</li>
+<li>to manage and optimize program memory.</li>
+</ul>
+<h2 id="Modules-that-JVM-has"><a href="#Modules-that-JVM-has" class="headerlink" title="Modules that JVM has"></a>Modules that JVM has</h2><ul>
+<li>Class Loader</li>
+<li>Memory Area - Allocated by JVM<ul>
+<li>Class Area</li>
+<li>Heap</li>
+<li>Stack</li>
+<li>PC Registor</li>
+<li>Native Method Stack</li>
+</ul>
+</li>
+<li>Execution Engine</li>
+</ul>
+<h3 id="ClassLoader"><a href="#ClassLoader" class="headerlink" title="ClassLoader"></a>ClassLoader</h3><p>ClassLoader is a subsystem of JVM which is used to load class files, whenever we run the java program, it is loaded first by ClassLoader.</p>
+<ul>
+<li>Loading - This component loads <code>.class</code> files form the hardware system into the JVM memory and stores the binary data(such as qualified class-name, immediate parent class-name, constructor info, method info, variables etc.) into Class(Method) Area.<ul>
+<li>Bootstrap ClassLoader - This is the first ClassLoader which is the super Class of extension ClassLoader, to load rt.jar(run time) which contains all class files of Java Standard Edition like java.lang.*; java.io.*; java.util.*;</li>
+<li>Extension ClassLoader - This is the sub ClassLoader of Bootstrap ClassLoader and the parent ClassLoader of application ClassLoader to load class files which are located inside $JAVA_HOME/jre/lib/ext directory.</li>
+<li>System / Application ClassLoader - This is the sub ClassLoader of Extension ClassLoader to load Java app class files. It loads the class files from classpath, by default, it’s currrent directory. the classpath could be change by <code>-cp</code> or <code>-classpath</code>.</li>
+</ul>
+</li>
+<li>Linking - This component performs the linking of a class or an interface. As it involves the allocation if new date structure, it may throw <code>outOfMemoryError</code> and performs 3 important activities.<ul>
+<li>Verification - This process if performed by Bytecode verifier and if the generated <code>.class</code> file is not valid, then throw <code>VerifyError</code>.</li>
+<li>Preparation - This is the process of assigning the memory for the class level or interface level static variables and assigns the default value.</li>
+<li>Resolution - This is the process of changing the symbolic references with the original memory references from the Class(Method) Area.</li>
+</ul>
+</li>
+<li>Initialization - This component performs the last phase of class loading where all the static variables are assigned the original values and the static blocks are executed from parent to child class. This process requires care synchronization as JVM is multithreaded and some threads may try to initialize the same class or interface at the same time.</li>
+</ul>
+<h3 id="Runtime-Data-Areas"><a href="#Runtime-Data-Areas" class="headerlink" title="Runtime Data Areas"></a>Runtime Data Areas</h3><p>Memory management system of JVM, it is used to store Class info, instance info, method info, constants or variables.</p>
+<p><img src="https://www.javacodegeeks.com/wp-content/uploads/2018/04/jvm_archi_clrda_guide_5.jpg" alt="JVM-runtime-data-areas"></p>
+<h4 id="Class-Method-Area"><a href="#Class-Method-Area" class="headerlink" title="Class(Method) Area"></a>Class(Method) Area</h4><p>ClassLoader loads the <code>.class</code> files and save bytecode in the Class(Method) area. This </p>
+<h4 id="Heap"><a href="#Heap" class="headerlink" title="Heap"></a>Heap</h4><p>JVM heap is a part of JVM memory where all the objects and it’s corresponding instance variables and arrays are stored. There is only one heap area and is shared across multiple threads as the data stored here is not thread-safe.</p>
+<h4 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h4><p>JVM Stack is a part of JVM memory where all temporary variables are stored, this area has stack frames and allocates one frame for each thread, once the thread execution is completed, the frame also gets destroyed. This component is thread-safe.</p>
+<h4 id="PC-Program-Counter-Regiser"><a href="#PC-Program-Counter-Regiser" class="headerlink" title="PC(Program Counter) Regiser"></a>PC(Program Counter) Regiser</h4><p>This component holds the address of JVM instruction which is currently executing, each Java thread has its own PC register to hold the address of the current executing instruction. Which means this component is thread-safe.</p>
+<h4 id="Native-Method-Stack"><a href="#Native-Method-Stack" class="headerlink" title="Native Method Stack"></a>Native Method Stack</h4><p>This component is written in different language and holds the native method info, each Java thread has a separate native method stack, which means that this component is thread-safe.</p>
+<p>There are 2 exceptional condition is associated with this area:</p>
+<ul>
+<li>If the program requires more native method stack than it’s permissible limit, the JVM throws <code>StackOverflow</code> error.</li>
+<li>If the native method stack is insufficiently expanded, the JVM throws <code>OutOfMemory</code> error.</li>
+</ul>
+<h3 id="Execution-Engine"><a href="#Execution-Engine" class="headerlink" title="Execution Engine"></a>Execution Engine</h3><p>This component executes the bytecode which is assigned to runtime data area and it has 3 main sub-components</p>
+<ul>
+<li>Interpreter - this component reads the bytecode instructions and executes them in sequential manner</li>
+<li>JIT(Just In Time) compiler - this component counterbalances Interpreters’s disadvantage of slow execution and improves the performance</li>
+<li>Garbage Collection - this component frees up the memeory by collecting and removing the unreferenced objects</li>
+</ul>
+<h4 id="Garbage-Collection"><a href="#Garbage-Collection" class="headerlink" title="Garbage Collection"></a>Garbage Collection</h4><p>Garbage collection is the process of identifying used and unused objects on Java heap and removing unused object from the heap.<br>A live object means an object is still referred to some part of program. Unused object means object is not being referred by any part of program and is eligible for garbage collection.<br>Programmer does not have to do manual garbage collection like C or C++. Java take care of it.</p>
+<p>JVM memory is devided to three parts</p>
+<ul>
+<li>Young generation</li>
+<li>Old generation</li>
+<li>Metaspace (Perm Gen)</li>
+</ul>
+<h5 id="Young-Generation"><a href="#Young-Generation" class="headerlink" title="Young Generation"></a>Young Generation</h5><p>As the name suggests, young generation is the area where newly created objects are allocated.</p>
+<ul>
+<li>When Young Generation fills up, it cause minor garbage collection aka Minor GC.</li>
+<li>When Minor GC occurs, the dead objects will be removed from Young Generation.</li>
+<li>If you have lots of dead objects in Young Generation, Minor GC will be performed faster.</li>
+<li>All Minor GCs are “stop the world” events, so when Minor GCs occurs, application thread will also stop.</li>
+</ul>
+<p><img src="https://java2blog.com/wp-content/uploads/2019/05/YoungOldGeneration-1024x733.png" alt="Young and Old generation"></p>
+<h5 id="Old-Generation"><a href="#Old-Generation" class="headerlink" title="Old Generation"></a>Old Generation</h5><ul>
+<li>It is used to hold old long surviving objexts.</li>
+<li>It is generally lager than the Young Generation.</li>
+<li>When tenured space is completely filled(or predefined threshold) with objects then Major GC occur. It will reclaim the memory and free up the space.</li>
+<li>Often, Major GCs are slower and less frequent than Minor GC.</li>
+</ul>
+<h5 id="Garbage-Collection-Algorithms"><a href="#Garbage-Collection-Algorithms" class="headerlink" title="Garbage Collection Algorithms"></a>Garbage Collection Algorithms</h5><h6 id="serial-collector"><a href="#serial-collector" class="headerlink" title="serial collector"></a>serial collector</h6><p>It uses single thread to perform all the garbage collection and is suitable for basic application with single processor machines.</p>
+<h6 id="Parallel-collector"><a href="#Parallel-collector" class="headerlink" title="Parallel collector"></a>Parallel collector</h6><p>It uses multiple CPUs to perform garbage collector. While serial collector uses 1 thread to perform GC, parallel GC uses several threads to perform GC and it is useful when there is enough memory and good number of cores.</p>
+<h6 id="Concurrent-collector"><a href="#Concurrent-collector" class="headerlink" title="Concurrent collector"></a>Concurrent collector</h6><p>Concurrent collector performs garbage collection with application threads. It is useful for applications which have medium to large datasets and require quick response time.</p>
+<h3 id="Native-Method-Interface-JNI-Java-Native-Interface"><a href="#Native-Method-Interface-JNI-Java-Native-Interface" class="headerlink" title="Native Method Interface (JNI - Java Native Interface)"></a>Native Method Interface (JNI - Java Native Interface)</h3><p>This component is a programming framework that allows Java code to call or be called by the libraries and the native application(the programs specific to the hardware or the OS of the system)</p>
+<h3 id="Native-Method-Libraries"><a href="#Native-Method-Libraries" class="headerlink" title="Native Method Libraries"></a>Native Method Libraries</h3><p>This component is a collection of native C, C++ libraries which are required by the execution engine.</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a href="https://www.javacodegeeks.com/2018/04/jvm-architecture-overview-of-jvm-and-jvm-architecture.html" target="_blank" rel="noopener">https://www.javacodegeeks.com/2018/04/jvm-architecture-overview-of-jvm-and-jvm-architecture.html</a></li>
+<li><a href="https://www.javacodegeeks.com/2018/04/jvm-architecture-jvm-class-loader-and-runtime-data-areas.html" target="_blank" rel="noopener">https://www.javacodegeeks.com/2018/04/jvm-architecture-jvm-class-loader-and-runtime-data-areas.html</a></li>
+<li><a href="https://www.javatpoint.com/jvm-java-virtual-machine" target="_blank" rel="noopener">https://www.javatpoint.com/jvm-java-virtual-machine</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jjuina.com/2020/04/20/JVM/" data-id="ck987ca3500099turf1at0w1n" class="article-share-link">Share</a>
+      
+      
+        <a href="https://jjuina.com/2020/04/20/JVM/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
   
     <article id="post-set_session-cannot-be-used" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -108,10 +235,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.jjuina.com/2020/03/06/set_session-cannot-be-used/" data-id="ck9439wdg001w0kurdq4jg6qz" class="article-share-link">Share</a>
+      <a data-url="https://jjuina.com/2020/03/06/set_session-cannot-be-used/" data-id="ck987ca3s001p9tur0x0qabtq" class="article-share-link">Share</a>
       
       
-        <a href="http://www.jjuina.com/2020/03/06/set_session-cannot-be-used/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="https://jjuina.com/2020/03/06/set_session-cannot-be-used/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
@@ -167,10 +294,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.jjuina.com/2018/09/08/useful-apps-on-windows/" data-id="ck9439wdk00260kur0p1486i5" class="article-share-link">Share</a>
+      <a data-url="https://jjuina.com/2018/09/08/useful-apps-on-windows/" data-id="ck987ca3z00249turaw9tcerc" class="article-share-link">Share</a>
       
       
-        <a href="http://www.jjuina.com/2018/09/08/useful-apps-on-windows/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="https://jjuina.com/2018/09/08/useful-apps-on-windows/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/" rel="tag">Tools</a></li></ul>
@@ -215,10 +342,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.jjuina.com/2018/09/06/Dream-in-Dream/" data-id="ck9439wbp00000kurbqjf2bbh" class="article-share-link">Share</a>
+      <a data-url="https://jjuina.com/2018/09/06/Dream-in-Dream/" data-id="ck987ca3100039turhajz2g4h" class="article-share-link">Share</a>
       
       
-        <a href="http://www.jjuina.com/2018/09/06/Dream-in-Dream/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="https://jjuina.com/2018/09/06/Dream-in-Dream/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jnote/" rel="tag">Jnote</a></li></ul>
@@ -265,10 +392,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.jjuina.com/2018/09/04/automatetheboringstuff/" data-id="ck9439wd200160kur8k0q0l5h" class="article-share-link">Share</a>
+      <a data-url="https://jjuina.com/2018/09/04/automatetheboringstuff/" data-id="ck987ca3h000z9tur0bas0v16" class="article-share-link">Share</a>
       
       
-        <a href="http://www.jjuina.com/2018/09/04/automatetheboringstuff/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="https://jjuina.com/2018/09/04/automatetheboringstuff/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
@@ -387,10 +514,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.jjuina.com/2018/09/02/Web-Scraping-with-Python/" data-id="ck9439wd000110kurh8g39mfp" class="article-share-link">Share</a>
+      <a data-url="https://jjuina.com/2018/09/02/Web-Scraping-with-Python/" data-id="ck987ca3f000v9turehr50df6" class="article-share-link">Share</a>
       
       
-        <a href="http://www.jjuina.com/2018/09/02/Web-Scraping-with-Python/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="https://jjuina.com/2018/09/02/Web-Scraping-with-Python/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
@@ -435,10 +562,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.jjuina.com/2018/08/11/Shit-Scala/" data-id="ck9439wcs000o0kur2k6s77we" class="article-share-link">Share</a>
+      <a data-url="https://jjuina.com/2018/08/11/Shit-Scala/" data-id="ck987ca38000h9turdct1hgh9" class="article-share-link">Share</a>
       
       
-        <a href="http://www.jjuina.com/2018/08/11/Shit-Scala/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="https://jjuina.com/2018/08/11/Shit-Scala/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Scala/" rel="tag">Scala</a></li></ul>
@@ -485,10 +612,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.jjuina.com/2018/07/31/python-wrapper/" data-id="ck9439wdh001z0kur87x0bjrq" class="article-share-link">Share</a>
+      <a data-url="https://jjuina.com/2018/07/31/python-wrapper/" data-id="ck987ca3w001u9tur35gxeqbm" class="article-share-link">Share</a>
       
       
-        <a href="http://www.jjuina.com/2018/07/31/python-wrapper/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="https://jjuina.com/2018/07/31/python-wrapper/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
@@ -535,10 +662,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.jjuina.com/2018/06/19/SVG-text-position/" data-id="ck9439wcr000k0kur2t393k56" class="article-share-link">Share</a>
+      <a data-url="https://jjuina.com/2018/06/19/SVG-text-position/" data-id="ck987ca37000f9turhytg4kt3" class="article-share-link">Share</a>
       
       
-        <a href="http://www.jjuina.com/2018/06/19/SVG-text-position/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="https://jjuina.com/2018/06/19/SVG-text-position/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SVG/" rel="tag">SVG</a></li></ul>
@@ -589,66 +716,13 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.jjuina.com/2018/06/18/Getting-the-pixel-width-height-of-text/" data-id="ck9439wcd00070kurcwoidczh" class="article-share-link">Share</a>
+      <a data-url="https://jjuina.com/2018/06/18/Getting-the-pixel-width-height-of-text/" data-id="ck987ca3400089turdut88eym" class="article-share-link">Share</a>
       
       
-        <a href="http://www.jjuina.com/2018/06/18/Getting-the-pixel-width-height-of-text/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="https://jjuina.com/2018/06/18/Getting-the-pixel-width-height-of-text/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SVG/" rel="tag">SVG</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-Init-attributes-by-Autowired-and-Constructor" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/06/11/Init-attributes-by-Autowired-and-Constructor/" class="article-date">
-  <time datetime="2018-06-10T16:00:00.000Z" itemprop="datePublished">2018-06-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/11/Init-attributes-by-Autowired-and-Constructor/">Init attributes by Autowired and Constructor</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>以下定义了一个抽象类 AbstractSummaryPageModel 和 其继承类 UpcomingSummaryPageModel</p>
-<ol>
-<li>AbstractSummaryPageModel 的大部分成员变量通过其 Constructor 初始化，而 FormatApiConfiguration 通过 @Autowired 初始化。</li>
-<li>UpcomingSummaryPageModel 继承了AbstractSummaryPageModel，并在其 Constructor 中调用 super() 对 AbstractSummaryPageModel 的部分成员量初始化。</li>
-<li>在使用 UpcomingSummaryPageModel 的时候，通过 new UpcomingSummaryPageModel(equestContext,simplifiedTrip, abbreviatedDateTimeFormatter, clock) 实例化对象。</li>
-<li>结果是 AbstractSummaryPageModel 的所有属性都被初始化了，除了 使用了 @Autowired 的 formatConfig 是null。</li>
-</ol>
-        
-          <p class="article-more-link">
-            <a href="/2018/06/11/Init-attributes-by-Autowired-and-Constructor/#more">Read More »</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.jjuina.com/2018/06/11/Init-attributes-by-Autowired-and-Constructor/" data-id="ck9439wco000f0kurccil4n3j" class="article-share-link">Share</a>
-      
-      
-        <a href="http://www.jjuina.com/2018/06/11/Init-attributes-by-Autowired-and-Constructor/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
 
     </footer>
   </div>
@@ -674,13 +748,9 @@
      
     <div class="widget follow">
       
-              <a class="github" aria-hidden="true" href="https://github.com/RoyJia" target="_blank" title="Github"></a>
+              <a class="github" aria-hidden="true" href="https://github.com/rjjuina" target="_blank" title="Github"></a>
       
       
-            <a class="weibo" aria-hidden="true"  href="http://weibo.com/laohoubin" target="_blank" title="微博"></a>
-      
-      
-              <a class="zhihu" aria-hidden="true"  href="http://www.zhihu.com/people/giscafer" target="_blank" title="知乎"></a>
       
       
             <a class="email" aria-hidden="true"  href="mailto:roy.jia@outlook.com" target="_blank" title="邮箱"></a>
@@ -699,7 +769,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title tagcloud">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Backbone/" style="font-size: 14px;">Backbone</a> <a href="/tags/CSS/" style="font-size: 16.75px;">CSS</a> <a href="/tags/Canvas-SVG/" style="font-size: 14px;">Canvas, SVG</a> <a href="/tags/Flux/" style="font-size: 14px;">Flux</a> <a href="/tags/Freemarker/" style="font-size: 14px;">Freemarker</a> <a href="/tags/Front-End/" style="font-size: 16.75px;">Front-End</a> <a href="/tags/GraphQL-REST/" style="font-size: 14px;">GraphQL, REST</a> <a href="/tags/Gulp/" style="font-size: 14px;">Gulp</a> <a href="/tags/HTTP/" style="font-size: 14px;">HTTP</a> <a href="/tags/Java/" style="font-size: 14px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 22.25px;">JavaScript</a> <a href="/tags/Jnote/" style="font-size: 25px;">Jnote</a> <a href="/tags/PWA/" style="font-size: 14px;">PWA</a> <a href="/tags/Python/" style="font-size: 19.5px;">Python</a> <a href="/tags/SVG/" style="font-size: 16.75px;">SVG</a> <a href="/tags/Scala/" style="font-size: 14px;">Scala</a> <a href="/tags/Tomcat-Maven/" style="font-size: 14px;">Tomcat, Maven</a> <a href="/tags/Tools/" style="font-size: 16.75px;">Tools</a> <a href="/tags/Tools-Windows/" style="font-size: 14px;">Tools, Windows</a> <a href="/tags/Web/" style="font-size: 14px;">Web</a> <a href="/tags/Web-Server/" style="font-size: 14px;">Web Server</a>
+      <a href="/tags/Backbone/" style="font-size: 14px;">Backbone</a> <a href="/tags/CSS/" style="font-size: 16.2px;">CSS</a> <a href="/tags/Canvas-SVG/" style="font-size: 14px;">Canvas, SVG</a> <a href="/tags/Flux/" style="font-size: 14px;">Flux</a> <a href="/tags/Freemarker/" style="font-size: 14px;">Freemarker</a> <a href="/tags/Front-End/" style="font-size: 16.2px;">Front-End</a> <a href="/tags/GraphQL-REST/" style="font-size: 14px;">GraphQL, REST</a> <a href="/tags/Gulp/" style="font-size: 14px;">Gulp</a> <a href="/tags/HTTP/" style="font-size: 14px;">HTTP</a> <a href="/tags/Java/" style="font-size: 16.2px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 22.8px;">JavaScript</a> <a href="/tags/Jnote/" style="font-size: 25px;">Jnote</a> <a href="/tags/PWA/" style="font-size: 14px;">PWA</a> <a href="/tags/Python/" style="font-size: 20.6px;">Python</a> <a href="/tags/SVG/" style="font-size: 16.2px;">SVG</a> <a href="/tags/Scala/" style="font-size: 14px;">Scala</a> <a href="/tags/Tomcat-Maven/" style="font-size: 14px;">Tomcat, Maven</a> <a href="/tags/Tools/" style="font-size: 18.4px;">Tools</a> <a href="/tags/Web/" style="font-size: 14px;">Web</a> <a href="/tags/Web-Server/" style="font-size: 14px;">Web Server</a>
     </div>
   </div>
 
@@ -709,6 +779,10 @@
     <h3 class="widget-title recent-posts">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/04/20/JVM/">JVM</a>
+          </li>
         
           <li>
             <a href="/2020/03/06/set_session-cannot-be-used/">set_session cannot be used inside a transaction</a>
@@ -726,10 +800,6 @@
             <a href="/2018/09/04/automatetheboringstuff/">What I get from automatetheboringstuff</a>
           </li>
         
-          <li>
-            <a href="/2018/09/02/Web-Scraping-with-Python/">What I get from Web Scraping with Python</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -739,7 +809,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title archive">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
