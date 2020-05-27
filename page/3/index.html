@@ -71,6 +71,106 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-ecmascript-2016-and-2017-e4-b8-80-e4-ba-9b-e6-96-b0-e7-9a-84-e6-96-b9-e6-b3-95-ef-bc-88-e7-89-b9-e6-80-a7-ef-bc-89" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/09/ecmascript-2016-and-2017-e4-b8-80-e4-ba-9b-e6-96-b0-e7-9a-84-e6-96-b9-e6-b3-95-ef-bc-88-e7-89-b9-e6-80-a7-ef-bc-89/" class="article-date">
+  <time datetime="2018-04-08T16:00:00.000Z" itemprop="datePublished">2018-04-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/09/ecmascript-2016-and-2017-e4-b8-80-e4-ba-9b-e6-96-b0-e7-9a-84-e6-96-b9-e6-b3-95-ef-bc-88-e7-89-b9-e6-80-a7-ef-bc-89/">ECMAScript 2016 and 2017 一些新的方法（特性）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://github.com/RoyJia/mdimgs/raw/master/res/ECMAScript-2016.png" alt="ECMAScript 2016"></p>
+<h2 id="Array-prototype-includes"><a href="#Array-prototype-includes" class="headerlink" title="Array.prototype.includes()"></a>Array.prototype.includes()</h2><p><code>includes</code> 是数组Array的一个简单的实例方法，可以轻松查找数组中是否存在某个项目（甚至可以查找<code>NaN</code>这样的元素，不像<code>indexOf</code>）。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="literal">NaN</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(arr.indexof(<span class="number">3</span>) &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="literal">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(arr.includes(<span class="number">3</span>)) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="literal">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// PS: indexOf doesn't work for searching NaN</span></span><br><span class="line">arr.includes(<span class="literal">NaN</span>); <span class="comment">// true</span></span><br><span class="line">arr.indexOf(<span class="literal">NaN</span>); <span class="comment">// -1 (doesn't work for NaN)</span></span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2018/04/09/ecmascript-2016-and-2017-e4-b8-80-e4-ba-9b-e6-96-b0-e7-9a-84-e6-96-b9-e6-b3-95-ef-bc-88-e7-89-b9-e6-80-a7-ef-bc-89/#more">Read More »</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jjuina.com/2018/04/09/ecmascript-2016-and-2017-e4-b8-80-e4-ba-9b-e6-96-b0-e7-9a-84-e6-96-b9-e6-b3-95-ef-bc-88-e7-89-b9-e6-80-a7-ef-bc-89/" data-id="ckapih75600189mur0vpa6woo" class="article-share-link">Share</a>
+      
+      
+        <a href="https://jjuina.com/2018/04/09/ecmascript-2016-and-2017-e4-b8-80-e4-ba-9b-e6-96-b0-e7-9a-84-e6-96-b9-e6-b3-95-ef-bc-88-e7-89-b9-e6-80-a7-ef-bc-89/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-hiding-elements-with-css" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/09/hiding-elements-with-css/" class="article-date">
+  <time datetime="2018-04-08T16:00:00.000Z" itemprop="datePublished">2018-04-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/09/hiding-elements-with-css/">Hiding Elements With CSS</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>显示和隐藏元素是响应式设计的重要组成部分。以下是通过CSS来显示和隐藏元素的方法。</p>
+</blockquote>
+<h2 id="通过CSS属性"><a href="#通过CSS属性" class="headerlink" title="通过CSS属性"></a>通过CSS属性</h2><h3 id="display"><a href="#display" class="headerlink" title="display"></a>display</h3><p>HTML文档中的每个元素都是一个矩形框，当通过设置 <code>display: none;</code> 隐藏元素的时候，该元素如同不存在（但依然存在于DOM树种），不占用页面空间，不会出现在渲染树种。尽管通过浏览器的检查工具，依然可以看到，但对用户来说，它是不可见的。<br>同样可以通过修改 <code>display</code> 属性的值将元素显示出来。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">display</span>: <span class="selector-tag">none</span>;</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2018/04/09/hiding-elements-with-css/#more">Read More »</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jjuina.com/2018/04/09/hiding-elements-with-css/" data-id="ckapih75c001p9mur9l2igwi6" class="article-share-link">Share</a>
+      
+      
+        <a href="https://jjuina.com/2018/04/09/hiding-elements-with-css/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-preparing" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/04/09/preparing/" class="article-date">
@@ -112,7 +212,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jjuina.com/2018/04/09/preparing/" data-id="ck987h7wy001tqjur13bseksz" class="article-share-link">Share</a>
+      <a data-url="https://jjuina.com/2018/04/09/preparing/" data-id="ckapih75e001u9murf9yz8ysl" class="article-share-link">Share</a>
       
       
         <a href="https://jjuina.com/2018/04/09/preparing/#disqus_thread" class="article-comment-link">Comments</a>
@@ -184,7 +284,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jjuina.com/2018/04/07/tomcat-maven-plugin/" data-id="ck987h7x0001zqjur4hmk46jc" class="article-share-link">Share</a>
+      <a data-url="https://jjuina.com/2018/04/07/tomcat-maven-plugin/" data-id="ckapih75i00279mur8sd1gq59" class="article-share-link">Share</a>
       
       
         <a href="https://jjuina.com/2018/04/07/tomcat-maven-plugin/#disqus_thread" class="article-comment-link">Comments</a>
@@ -235,7 +335,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jjuina.com/2018/03/17/way-of-performing-http-request/" data-id="ck987h7x30027qjur1m8v0wkr" class="article-share-link">Share</a>
+      <a data-url="https://jjuina.com/2018/03/17/way-of-performing-http-request/" data-id="ckapih75i00299mur3lkc1j8y" class="article-share-link">Share</a>
       
       
         <a href="https://jjuina.com/2018/03/17/way-of-performing-http-request/#disqus_thread" class="article-comment-link">Comments</a>
@@ -285,7 +385,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jjuina.com/2018/01/04/css-grid-layout-way-to-page/" data-id="ck987h7wm0010qjur6fwp5xjx" class="article-share-link">Share</a>
+      <a data-url="https://jjuina.com/2018/01/04/css-grid-layout-way-to-page/" data-id="ckapih75200109mur4lk5gmlm" class="article-share-link">Share</a>
       
       
         <a href="https://jjuina.com/2018/01/04/css-grid-layout-way-to-page/#disqus_thread" class="article-comment-link">Comments</a>
@@ -348,7 +448,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jjuina.com/2017/12/20/what-we-should-know-about-web-dev/" data-id="ck987h7x20024qjur0l49fyor" class="article-share-link">Share</a>
+      <a data-url="https://jjuina.com/2017/12/20/what-we-should-know-about-web-dev/" data-id="ckapih75j002c9murewizbf8y" class="article-share-link">Share</a>
       
       
         <a href="https://jjuina.com/2017/12/20/what-we-should-know-about-web-dev/#disqus_thread" class="article-comment-link">Comments</a>
@@ -396,7 +496,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jjuina.com/2017/11/01/Freemarker/" data-id="ck987h7w80005qjur1xi1a045" class="article-share-link">Share</a>
+      <a data-url="https://jjuina.com/2017/11/01/Freemarker/" data-id="ckapih74n00059murcnw08cde" class="article-share-link">Share</a>
       
       
         <a href="https://jjuina.com/2017/11/01/Freemarker/#disqus_thread" class="article-comment-link">Comments</a>
@@ -444,7 +544,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jjuina.com/2017/09/08/backbone/" data-id="ck987h7wo0014qjurg4q7hair" class="article-share-link">Share</a>
+      <a data-url="https://jjuina.com/2017/09/08/backbone/" data-id="ckapih75400149mur2j2060sc" class="article-share-link">Share</a>
       
       
         <a href="https://jjuina.com/2017/09/08/backbone/#disqus_thread" class="article-comment-link">Comments</a>
@@ -494,112 +594,13 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jjuina.com/2017/08/26/front-end-survey/" data-id="ck987h7wq001aqjurh634duw8" class="article-share-link">Share</a>
+      <a data-url="https://jjuina.com/2017/08/26/front-end-survey/" data-id="ckapih756001a9murfoq01vsy" class="article-share-link">Share</a>
       
       
         <a href="https://jjuina.com/2017/08/26/front-end-survey/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Front-End/" rel="tag">Front-End</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-gulp" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/08/16/gulp/" class="article-date">
-  <time datetime="2017-08-15T16:00:00.000Z" itemprop="datePublished">2017-08-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/16/gulp/">gulp</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://github.com/RoyJia/mdimgs/raw/master/res/gulp-logo.png" alt=""></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天碰到一个问题，在build项目，跑gulpjs的时候出现了问题，gulp的一个task（check-complexity）失败了。一直无法定位问题所在，所以来研究一下gulpjs到底是个什么鬼。<br>希望经过一番研究之后能够找到解决办法。</p>
-        
-          <p class="article-more-link">
-            <a href="/2017/08/16/gulp/#more">Read More »</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://jjuina.com/2017/08/16/gulp/" data-id="ck987h7wr001dqjur5ghd0coo" class="article-share-link">Share</a>
-      
-      
-        <a href="https://jjuina.com/2017/08/16/gulp/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gulp/" rel="tag">Gulp</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-the-part-of-web-server" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/08/16/the-part-of-web-server/" class="article-date">
-  <time datetime="2017-08-15T16:00:00.000Z" itemprop="datePublished">2017-08-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/16/the-part-of-web-server/">The Part of Web Server</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p><strong>Apache/Nginx/IIS —&gt; Jetty/Tomcat/GlassFish/Weblogic/JBoss/WebSphere</strong></p>
-</blockquote>
-<h3 id="HTTP-Server"><a href="#HTTP-Server" class="headerlink" title="HTTP Server"></a>HTTP Server</h3><p><img src="https://github.com/RoyJia/mdimgs/raw/master/res/HTTP-Request-Response.png" alt=""></p>
-<p><strong>HTTP Server</strong>(Apache/Nginx)本质上也是一种应用程序，通常安装运行在服务器上。其作用是绑定服务器的IP，监听某个TCP端口来接受并处理HTTP请求。这就是客户端通过HTTP协议获取服务器上网页（HTML/CSS/JS…）、文档（PDF/TXT…）、音频（MP3/MP4…）、视屏（MOV/RMVB/MKV/AVI…）等等资源的原理。<br>Apache HTTP Server和Nginx常用作静态内容服务和代理服务，本身不支持动态生成内容，擅长将静态资源直接传送到客户端。也就是说HTTP Server的Response部分是静态资源。但是都有插件支持动态编程语言处理。但是，Nginx的IO模型比Apache更适合跑代理，所以Nginx一般作为前端缓冲代理。</p>
-        
-          <p class="article-more-link">
-            <a href="/2017/08/16/the-part-of-web-server/#more">Read More »</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://jjuina.com/2017/08/16/the-part-of-web-server/" data-id="ck987h7wz001xqjur6x260ejp" class="article-share-link">Share</a>
-      
-      
-        <a href="https://jjuina.com/2017/08/16/the-part-of-web-server/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web-Server/" rel="tag">Web Server</a></li></ul>
 
     </footer>
   </div>
@@ -635,6 +636,14 @@
       <ul>
         
           <li>
+            <a href="/2020/05/27/hive-on-mac-and-pyhive/">Install hadoop | hive on mac and use pyhive</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/07/useful-apps-on-mac/">Apps on my Mac</a>
+          </li>
+        
+          <li>
             <a href="/2020/04/20/JVM/">JVM</a>
           </li>
         
@@ -644,14 +653,6 @@
         
           <li>
             <a href="/2018/09/08/useful-apps-on-windows/">Useful app on windows</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/06/Dream-in-Dream/">梦中梦</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/04/automatetheboringstuff/">What I get from automatetheboringstuff</a>
           </li>
         
       </ul>

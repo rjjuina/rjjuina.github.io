@@ -71,6 +71,110 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-SVG-text-position" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/19/SVG-text-position/" class="article-date">
+  <time datetime="2018-06-18T16:00:00.000Z" itemprop="datePublished">2018-06-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/19/SVG-text-position/">Positioning text element into rectangle central</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>接上篇。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">g</span> <span class="attr">id</span>=<span class="string">"seat_2"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">rect</span> <span class="attr">width</span>=<span class="string">"50"</span> <span class="attr">height</span>=<span class="string">"25"</span> <span class="attr">x</span>=<span class="string">"50"</span> <span class="attr">y</span>=<span class="string">"25"</span> <span class="attr">stroke-width</span>=<span class="string">"1.5"</span> <span class="attr">stroke</span>=<span class="string">"#000000"</span> <span class="attr">fill</span>=<span class="string">"#49DD8E"</span>&gt;</span><span class="tag">&lt;/<span class="name">rect</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">text</span> <span class="attr">id</span>=<span class="string">"text_seat_2"</span> <span class="attr">x</span>=<span class="string">"75"</span> <span class="attr">y</span>=<span class="string">"37.5"</span> <span class="attr">fill</span>=<span class="string">"#333"</span> <span class="attr">text-anchor</span>=<span class="string">"middle"</span> <span class="attr">dominant-baseline</span>=<span class="string">"central"</span>&gt;</span>Thor<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">g</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>我的目的就是将同一个 group 中的 text 定位到 rectangle 中间的位置。由于只考虑到 text 的坐标 baseline 是文本左下角的坐标（基点），所以考虑如何通过已知的值确定这个坐标，所以才有了上篇文档中描述的思路。但其实根本就不需要去考虑这个问题，因为 text 的坐标 baseline 是可以改变的，只需要让 text 的基点变成文本中间点的坐标就可以了。</p>
+        
+          <p class="article-more-link">
+            <a href="/2018/06/19/SVG-text-position/#more">Read More »</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jjuina.com/2018/06/19/SVG-text-position/" data-id="ckapih74t000f9mur0sucdn3w" class="article-share-link">Share</a>
+      
+      
+        <a href="https://jjuina.com/2018/06/19/SVG-text-position/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SVG/" rel="tag">SVG</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-Getting-the-pixel-width-height-of-text" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/18/Getting-the-pixel-width-height-of-text/" class="article-date">
+  <time datetime="2018-06-17T16:00:00.000Z" itemprop="datePublished">2018-06-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/18/Getting-the-pixel-width-height-of-text/">Getting the pixel width/height of text on a web page</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><blockquote>
+<p>为什么我需要关注这个问题？JavaScript 如何获得一段文本的像素宽度和高度（pixel width/height）</p>
+</blockquote>
+<p>将一段文本显示在一个矩形框的正中间。对没错，就是这样一个简单的需求。</p>
+<p>但是考虑到矩形框是 SVG 的子标签 rect，文本是 SVG 的子标签 text。我知道的是，SVG 中的所有元素，是按照从前到后的顺序依次加载渲染的，且每个元素的位置由指定的坐标决定的。<br>而且 SVG 中各个子元素的坐标都是基于 SVG 标签左上角的原点坐标<code>(0, 0)</code>。再加之整个代码环境基于 React。所以我的目的是让 text 基于一个 rect 的坐标，将其定位在 rect 中间的位置。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">textWidth + wPadding * <span class="number">2</span> = rectWidth</span><br><span class="line">textHeight + hPadding * <span class="number">2</span> = reactHeight</span><br><span class="line"></span><br><span class="line">rect_x + wPadding = text_x</span><br><span class="line">rect_y + hPadding + textHeight = text_y</span><br><span class="line"></span><br><span class="line">text_x / text_y                   <span class="number">3</span></span><br><span class="line">  wPadding / hPadding             <span class="number">2</span></span><br><span class="line">    textWidth / textHeight        <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>根据以上公式，我必须先获取到 text 的宽度和高度（单位：像素）</p>
+        
+          <p class="article-more-link">
+            <a href="/2018/06/18/Getting-the-pixel-width-height-of-text/#more">Read More »</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jjuina.com/2018/06/18/Getting-the-pixel-width-height-of-text/" data-id="ckapih74q00099murbjxq54cz" class="article-share-link">Share</a>
+      
+      
+        <a href="https://jjuina.com/2018/06/18/Getting-the-pixel-width-height-of-text/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SVG/" rel="tag">SVG</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-Init-attributes-by-Autowired-and-Constructor" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/06/11/Init-attributes-by-Autowired-and-Constructor/" class="article-date">
@@ -108,7 +212,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jjuina.com/2018/06/11/Init-attributes-by-Autowired-and-Constructor/" data-id="ck987h7wa0009qjurh0anck84" class="article-share-link">Share</a>
+      <a data-url="https://jjuina.com/2018/06/11/Init-attributes-by-Autowired-and-Constructor/" data-id="ckapih74r000b9murgrwwfftj" class="article-share-link">Share</a>
       
       
         <a href="https://jjuina.com/2018/06/11/Init-attributes-by-Autowired-and-Constructor/#disqus_thread" class="article-comment-link">Comments</a>
@@ -157,7 +261,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jjuina.com/2018/06/02/Canvas-plus-SVG/" data-id="ck987h7w30001qjur6kwhdico" class="article-share-link">Share</a>
+      <a data-url="https://jjuina.com/2018/06/02/Canvas-plus-SVG/" data-id="ckapih74f00009murem3t31nh" class="article-share-link">Share</a>
       
       
         <a href="https://jjuina.com/2018/06/02/Canvas-plus-SVG/#disqus_thread" class="article-comment-link">Comments</a>
@@ -206,7 +310,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jjuina.com/2018/05/08/Aware-of-JavaScript-Trends-in-2018/" data-id="ck987h7vz0000qjurbt9pb0au" class="article-share-link">Share</a>
+      <a data-url="https://jjuina.com/2018/05/08/Aware-of-JavaScript-Trends-in-2018/" data-id="ckapih74j00019murhywc52wu" class="article-share-link">Share</a>
       
       
         <a href="https://jjuina.com/2018/05/08/Aware-of-JavaScript-Trends-in-2018/#disqus_thread" class="article-comment-link">Comments</a>
@@ -261,7 +365,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jjuina.com/2018/05/03/Windows-Questions/" data-id="ck987h7wi000qqjurdy6h7ugk" class="article-share-link">Share</a>
+      <a data-url="https://jjuina.com/2018/05/03/Windows-Questions/" data-id="ckapih751000w9murbkre84j0" class="article-share-link">Share</a>
       
       
         <a href="https://jjuina.com/2018/05/03/Windows-Questions/#disqus_thread" class="article-comment-link">Comments</a>
@@ -313,7 +417,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jjuina.com/2018/04/27/Functional-Programming-with-JavaScript(ES6)/" data-id="ck987h7w60003qjur8973dc8h" class="article-share-link">Share</a>
+      <a data-url="https://jjuina.com/2018/04/27/Functional-Programming-with-JavaScript(ES6)/" data-id="ckapih74m00039murdzqf1rsx" class="article-share-link">Share</a>
       
       
         <a href="https://jjuina.com/2018/04/27/Functional-Programming-with-JavaScript(ES6)/#disqus_thread" class="article-comment-link">Comments</a>
@@ -364,7 +468,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jjuina.com/2018/04/26/Think-thought/" data-id="ck987h7wh000mqjur975eh6o4" class="article-share-link">Share</a>
+      <a data-url="https://jjuina.com/2018/04/26/Think-thought/" data-id="ckapih74w000m9mur6uh9hlak" class="article-share-link">Share</a>
       
       
         <a href="https://jjuina.com/2018/04/26/Think-thought/#disqus_thread" class="article-comment-link">Comments</a>
@@ -420,7 +524,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jjuina.com/2018/04/15/GraphQL-and-REST/" data-id="ck987h7wj000sqjuree190x5o" class="article-share-link">Share</a>
+      <a data-url="https://jjuina.com/2018/04/15/GraphQL-and-REST/" data-id="ckapih74x000p9mur32mk0s46" class="article-share-link">Share</a>
       
       
         <a href="https://jjuina.com/2018/04/15/GraphQL-and-REST/#disqus_thread" class="article-comment-link">Comments</a>
@@ -480,113 +584,13 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jjuina.com/2018/04/14/Thought-of-Discrimination/" data-id="ck987h7wk000vqjurb1au3gcj" class="article-share-link">Share</a>
+      <a data-url="https://jjuina.com/2018/04/14/Thought-of-Discrimination/" data-id="ckapih74z000t9mureu0dh6d0" class="article-share-link">Share</a>
       
       
         <a href="https://jjuina.com/2018/04/14/Thought-of-Discrimination/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jnote/" rel="tag">Jnote</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-ecmascript-2016-and-2017-e4-b8-80-e4-ba-9b-e6-96-b0-e7-9a-84-e6-96-b9-e6-b3-95-ef-bc-88-e7-89-b9-e6-80-a7-ef-bc-89" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/09/ecmascript-2016-and-2017-e4-b8-80-e4-ba-9b-e6-96-b0-e7-9a-84-e6-96-b9-e6-b3-95-ef-bc-88-e7-89-b9-e6-80-a7-ef-bc-89/" class="article-date">
-  <time datetime="2018-04-08T16:00:00.000Z" itemprop="datePublished">2018-04-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/09/ecmascript-2016-and-2017-e4-b8-80-e4-ba-9b-e6-96-b0-e7-9a-84-e6-96-b9-e6-b3-95-ef-bc-88-e7-89-b9-e6-80-a7-ef-bc-89/">ECMAScript 2016 and 2017 一些新的方法（特性）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://github.com/RoyJia/mdimgs/raw/master/res/ECMAScript-2016.png" alt="ECMAScript 2016"></p>
-<h2 id="Array-prototype-includes"><a href="#Array-prototype-includes" class="headerlink" title="Array.prototype.includes()"></a>Array.prototype.includes()</h2><p><code>includes</code> 是数组Array的一个简单的实例方法，可以轻松查找数组中是否存在某个项目（甚至可以查找<code>NaN</code>这样的元素，不像<code>indexOf</code>）。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="literal">NaN</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(arr.indexof(<span class="number">3</span>) &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="literal">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(arr.includes(<span class="number">3</span>)) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="literal">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// PS: indexOf doesn't work for searching NaN</span></span><br><span class="line">arr.includes(<span class="literal">NaN</span>); <span class="comment">// true</span></span><br><span class="line">arr.indexOf(<span class="literal">NaN</span>); <span class="comment">// -1 (doesn't work for NaN)</span></span><br></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a href="/2018/04/09/ecmascript-2016-and-2017-e4-b8-80-e4-ba-9b-e6-96-b0-e7-9a-84-e6-96-b9-e6-b3-95-ef-bc-88-e7-89-b9-e6-80-a7-ef-bc-89/#more">Read More »</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://jjuina.com/2018/04/09/ecmascript-2016-and-2017-e4-b8-80-e4-ba-9b-e6-96-b0-e7-9a-84-e6-96-b9-e6-b3-95-ef-bc-88-e7-89-b9-e6-80-a7-ef-bc-89/" data-id="ck987h7wp0018qjurfgia8q7q" class="article-share-link">Share</a>
-      
-      
-        <a href="https://jjuina.com/2018/04/09/ecmascript-2016-and-2017-e4-b8-80-e4-ba-9b-e6-96-b0-e7-9a-84-e6-96-b9-e6-b3-95-ef-bc-88-e7-89-b9-e6-80-a7-ef-bc-89/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-hiding-elements-with-css" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/09/hiding-elements-with-css/" class="article-date">
-  <time datetime="2018-04-08T16:00:00.000Z" itemprop="datePublished">2018-04-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/09/hiding-elements-with-css/">Hiding Elements With CSS</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>显示和隐藏元素是响应式设计的重要组成部分。以下是通过CSS来显示和隐藏元素的方法。</p>
-</blockquote>
-<h2 id="通过CSS属性"><a href="#通过CSS属性" class="headerlink" title="通过CSS属性"></a>通过CSS属性</h2><h3 id="display"><a href="#display" class="headerlink" title="display"></a>display</h3><p>HTML文档中的每个元素都是一个矩形框，当通过设置 <code>display: none;</code> 隐藏元素的时候，该元素如同不存在（但依然存在于DOM树种），不占用页面空间，不会出现在渲染树种。尽管通过浏览器的检查工具，依然可以看到，但对用户来说，它是不可见的。<br>同样可以通过修改 <code>display</code> 属性的值将元素显示出来。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">display</span>: <span class="selector-tag">none</span>;</span><br></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a href="/2018/04/09/hiding-elements-with-css/#more">Read More »</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://jjuina.com/2018/04/09/hiding-elements-with-css/" data-id="ck987h7wv001mqjuraxz4df52" class="article-share-link">Share</a>
-      
-      
-        <a href="https://jjuina.com/2018/04/09/hiding-elements-with-css/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
 
     </footer>
   </div>
@@ -622,6 +626,14 @@
       <ul>
         
           <li>
+            <a href="/2020/05/27/hive-on-mac-and-pyhive/">Install hadoop | hive on mac and use pyhive</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/07/useful-apps-on-mac/">Apps on my Mac</a>
+          </li>
+        
+          <li>
             <a href="/2020/04/20/JVM/">JVM</a>
           </li>
         
@@ -631,14 +643,6 @@
         
           <li>
             <a href="/2018/09/08/useful-apps-on-windows/">Useful app on windows</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/06/Dream-in-Dream/">梦中梦</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/04/automatetheboringstuff/">What I get from automatetheboringstuff</a>
           </li>
         
       </ul>

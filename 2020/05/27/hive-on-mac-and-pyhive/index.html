@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Install hadoop | hive on mac and use pyhive | 务虚之城</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Referenceshttps:&#x2F;&#x2F;dbmstutorials.com&#x2F;hive&#x2F;hive-setup-on-mac.htmlhttps:&#x2F;&#x2F;www.codeleading.com&#x2F;article&#x2F;33952372343&#x2F;http:&#x2F;&#x2F;blog.songchunmin.com&#x2F;708.htmlhttps:&#x2F;&#x2F;github.com&#x2F;dropbox&#x2F;PyHive Download Download h">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Install hadoop | hive on mac and use pyhive">
+<meta property="og:url" content="https://jjuina.com/2020/05/27/hive-on-mac-and-pyhive/index.html">
+<meta property="og:site_name" content="务虚之城">
+<meta property="og:description" content="Referenceshttps:&#x2F;&#x2F;dbmstutorials.com&#x2F;hive&#x2F;hive-setup-on-mac.htmlhttps:&#x2F;&#x2F;www.codeleading.com&#x2F;article&#x2F;33952372343&#x2F;http:&#x2F;&#x2F;blog.songchunmin.com&#x2F;708.htmlhttps:&#x2F;&#x2F;github.com&#x2F;dropbox&#x2F;PyHive Download Download h">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-05-26T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-05-27T15:36:01.741Z">
+<meta property="article:author" content="Roy Jia">
+<meta property="article:tag" content="hive, Python">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="务虚之城" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://jjuina.com"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">HomePage</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">务虚之城</a>
+      </h1>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-hive-on-mac-and-pyhive" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/27/hive-on-mac-and-pyhive/" class="article-date">
+  <time datetime="2020-05-26T16:00:00.000Z" itemprop="datePublished">2020-05-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Install hadoop | hive on mac and use pyhive
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a href="https://dbmstutorials.com/hive/hive-setup-on-mac.html" target="_blank" rel="noopener">https://dbmstutorials.com/hive/hive-setup-on-mac.html</a><br><a href="https://www.codeleading.com/article/33952372343/" target="_blank" rel="noopener">https://www.codeleading.com/article/33952372343/</a><br><a href="http://blog.songchunmin.com/708.html" target="_blank" rel="noopener">http://blog.songchunmin.com/708.html</a><br><a href="https://github.com/dropbox/PyHive" target="_blank" rel="noopener">https://github.com/dropbox/PyHive</a></p>
+<h2 id="Download"><a href="#Download" class="headerlink" title="Download"></a>Download</h2><ol>
+<li>Download hadoop - <a href="https://www.apache.org/dyn/closer.cgi/hadoop/common/hadoop-3.1.3/hadoop-3.1.3.tar.gz" target="_blank" rel="noopener">https://www.apache.org/dyn/closer.cgi/hadoop/common/hadoop-3.1.3/hadoop-3.1.3.tar.gz</a></li>
+<li>Download hive - <a href="https://downloads.apache.org/hive/hive-3.1.2/" target="_blank" rel="noopener">https://downloads.apache.org/hive/hive-3.1.2/</a></li>
+<li>Download mysql - <a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener">https://dev.mysql.com/downloads/mysql/</a></li>
+<li>Download mysql-connect-java - <a href="https://dev.mysql.com/downloads/connector/j/" target="_blank" rel="noopener">https://dev.mysql.com/downloads/connector/j/</a></li>
+</ol>
+<h3 id="Setup-environment-variable-to-bash-profile"><a href="#Setup-environment-variable-to-bash-profile" class="headerlink" title="Setup environment variable to ~/.bash_profile"></a>Setup environment variable to ~/.bash_profile</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> HIVE_HOME=/Users/rjia/Java/apache-hive-3.1.2-bin</span><br><span class="line"><span class="built_in">export</span> HADOOP_HOME=/Users/rjia/Java/hadoop-3.1.3</span><br><span class="line"><span class="built_in">export</span> HBASE_HOME=/Users/rjia/Java/hbase-2.2.4</span><br><span class="line"><span class="built_in">export</span> MYSQL_HOME=/usr/<span class="built_in">local</span>/mysql-8.0.20-macos10.15-x86_64</span><br><span class="line"><span class="comment"># append bin to PATH</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$HIVE_HOME</span>/bin:<span class="variable">$HADOOP_HOME</span>/bin:<span class="variable">$HBASE_HOME</span>/bin:<span class="variable">$MYSQL_HOME</span>/bin</span><br></pre></td></tr></table></figure>
+
+<h3 id="To-enable-environment-variable"><a href="#To-enable-environment-variable" class="headerlink" title="To enable environment variable"></a>To enable environment variable</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">source</span> ~/.bash_profile</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h3 id="Verify-hadoop-hive-mysql"><a href="#Verify-hadoop-hive-mysql" class="headerlink" title="Verify hadoop | hive | mysql"></a>Verify hadoop | hive | mysql</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ mysql -V</span><br><span class="line">mysql  Ver 8.0.20 <span class="keyword">for</span> macos10.15 on x86_64 (MySQL Community Server - GPL)</span><br><span class="line"></span><br><span class="line">$ hadoop version</span><br><span class="line">Hadoop 3.1.3</span><br><span class="line"></span><br><span class="line">$ hive version</span><br><span class="line">Error</span><br></pre></td></tr></table></figure>
+
+<h3 id="Setup-hive-warehouse-and-config-hive-warehouse-in-HIVE-HOME-conf-hive-site-xml"><a href="#Setup-hive-warehouse-and-config-hive-warehouse-in-HIVE-HOME-conf-hive-site-xml" class="headerlink" title="Setup hive-warehouse and config hive-warehouse in $HIVE_HOME/conf/hive-site.xml"></a>Setup hive-warehouse and config hive-warehouse in $HIVE_HOME/conf/hive-site.xml</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cd to somewhere, like ~/Java</span></span><br><span class="line">$ hadoop fs -mkdir -p hive-warehouse</span><br><span class="line">$ hadoop fs -chmod g+w hive-warehouse</span><br></pre></td></tr></table></figure>
+
+<h4 id="Setup-HIVE-HOME-conf-hive-site-xml"><a href="#Setup-HIVE-HOME-conf-hive-site-xml" class="headerlink" title="Setup $HIVE_HOME/conf/hive-site.xml"></a>Setup $HIVE_HOME/conf/hive-site.xml</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>hive.metastore.warehouse.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>/Users/rjia/Java/hive-warehouse<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">description</span>&gt;</span>Warehouse Location<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Operate-hive"><a href="#Operate-hive" class="headerlink" title="Operate hive"></a>Operate hive</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; show databases;</span><br><span class="line">hive&gt; show tables;</span><br><span class="line">hive&gt; create table <span class="built_in">test</span> (id int, name string);</span><br><span class="line">hive&gt; insert into <span class="built_in">test</span> values (1, <span class="string">'John Smith'</span>);</span><br><span class="line">hive&gt; select * from <span class="built_in">test</span>;</span><br><span class="line">hive&gt; drop table <span class="built_in">test</span>;</span><br><span class="line">hive&gt; <span class="built_in">exit</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Python-call-hive"><a href="#Python-call-hive" class="headerlink" title="Python call hive"></a>Python call hive</h2><h3 id="Start-hiveserver2"><a href="#Start-hiveserver2" class="headerlink" title="Start hiveserver2"></a>Start hiveserver2</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive --service hiveserver2 --hiveconf hive.server2.thrift.port=10000 --hiveconf hive.root.logger=INFO,console</span><br></pre></td></tr></table></figure>
+
+<h3 id="Install-pyhive-and-dependencies"><a href="#Install-pyhive-and-dependencies" class="headerlink" title="Install pyhive and dependencies"></a>Install pyhive and dependencies</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pip install sasl</span><br><span class="line">pip install thrift</span><br><span class="line">pip install thrift-sasl</span><br><span class="line">pip install PyHive</span><br></pre></td></tr></table></figure>
+
+<h3 id="Use-pyhive"><a href="#Use-pyhive" class="headerlink" title="Use pyhive"></a>Use pyhive</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyhive <span class="keyword">import</span> hive</span><br><span class="line"></span><br><span class="line">conn = hive.connect(<span class="string">'localhost'</span>)</span><br><span class="line">cursor = conn.cursor()</span><br><span class="line">cursor.execute(<span class="string">'show tables'</span>)</span><br><span class="line">cursor.fetchall()</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jjuina.com/2020/05/27/hive-on-mac-and-pyhive/" data-id="ckapih75a001k9murhsbw2ojw" class="article-share-link">Share</a>
+      
+      
+        <a href="https://jjuina.com/2020/05/27/hive-on-mac-and-pyhive/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hive-Python/" rel="tag">hive, Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+ 
+<script src="/jquery/jquery.min.js"></script>
+
+  <div id="random_posts">
+    <h2>Recommended Posts</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =4
+          var site = {BASE_URI:'/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/05/07/useful-apps-on-mac/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Apps on my Mac</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+      </section>
+      
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">Content</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">1.</span> <span class="toc-text">References</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Download"><span class="toc-number">2.</span> <span class="toc-text">Download</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Setup-environment-variable-to-bash-profile"><span class="toc-number">2.1.</span> <span class="toc-text">Setup environment variable to ~&#x2F;.bash_profile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#To-enable-environment-variable"><span class="toc-number">2.2.</span> <span class="toc-text">To enable environment variable</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Verify-hadoop-hive-mysql"><span class="toc-number">2.3.</span> <span class="toc-text">Verify hadoop | hive | mysql</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Setup-hive-warehouse-and-config-hive-warehouse-in-HIVE-HOME-conf-hive-site-xml"><span class="toc-number">2.4.</span> <span class="toc-text">Setup hive-warehouse and config hive-warehouse in $HIVE_HOME&#x2F;conf&#x2F;hive-site.xml</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Setup-HIVE-HOME-conf-hive-site-xml"><span class="toc-number">2.4.1.</span> <span class="toc-text">Setup $HIVE_HOME&#x2F;conf&#x2F;hive-site.xml</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Operate-hive"><span class="toc-number">2.5.</span> <span class="toc-text">Operate hive</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python-call-hive"><span class="toc-number">3.</span> <span class="toc-text">Python call hive</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Start-hiveserver2"><span class="toc-number">3.1.</span> <span class="toc-text">Start hiveserver2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Install-pyhive-and-dependencies"><span class="toc-number">3.2.</span> <span class="toc-text">Install pyhive and dependencies</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Use-pyhive"><span class="toc-number">3.3.</span> <span class="toc-text">Use pyhive</span></a></li></ol></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2020 Roy Jia&nbsp;|&nbsp;
+      Theme by <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      Contact&nbsp;|&nbsp;roy.jia@outlook.com
+    </div>
+  </div>
+</footer>
+ 
+<script src="/jquery/jquery.min.js"></script>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">HomePage</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+<script>
+  var disqus_shortname = 'jjuina';
+  
+  var disqus_url = 'https://jjuina.com/2020/05/27/hive-on-mac-and-pyhive/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ 
+<script src="/js/is.js"></script>
+
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/elevator.js"></script>
+
+  </div>
+</body>
+</html>
